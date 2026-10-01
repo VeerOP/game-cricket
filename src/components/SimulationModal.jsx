@@ -132,49 +132,51 @@ export default function SimulationModal({
   const lossesCount = matchResults.filter(m => !m.isWin).length + (isMatchFinished && !simulatedMatchData?.isWin ? 1 : 0);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-zinc-950/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-5xl bg-zinc-900 border border-zinc-800 rounded-2xl shadow-xl overflow-hidden my-auto flex flex-col max-h-[94vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-zinc-950/85 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-5xl bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden my-auto flex flex-col max-h-[94dvh]">
         {/* Top Header */}
-        <div className="p-3.5 sm:p-4 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-amber-400 font-sports font-bold text-sm">
+        <div className="p-3 sm:p-4 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-amber-400 font-sports font-bold text-xs sm:text-sm shrink-0">
               M{currentMatchIndex + 1}
             </div>
-            <div>
-              <h2 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+            <div className="min-w-0">
+              <h2 className="text-xs sm:text-base font-bold text-white flex items-center gap-1.5 sm:gap-2 flex-wrap truncate">
                 <span>Match {currentMatchIndex + 1} of {totalMatches}</span>
-                <span className="text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 font-normal">
+                <span className="text-[10px] sm:text-[11px] px-1.5 py-0.2 rounded bg-zinc-800 text-zinc-300 font-normal shrink-0">
                   {currentFixture?.stage}
                 </span>
               </h2>
-              <div className="flex items-center gap-2 text-xs text-zinc-400 mt-0.5">
-                <span>Record: <strong className="text-zinc-100">{winsCount}W - {lossesCount}L</strong></span>
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs text-zinc-400 mt-0.5">
+                <span>Rec: <strong className="text-zinc-100">{winsCount}W - {lossesCount}L</strong></span>
                 <span className="text-zinc-600">•</span>
-                <span>Fantasy: <strong className="text-zinc-100">{totalFantasyPoints.toLocaleString()} pts</strong></span>
+                <span>Pts: <strong className="text-zinc-100">{totalFantasyPoints.toLocaleString()}</strong></span>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={handleSimulateAllRemaining}
-              className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-medium border border-zinc-700 transition-colors cursor-pointer"
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-medium border border-zinc-700 transition-colors cursor-pointer flex items-center gap-1"
+              title="Fast simulate all remaining matches"
             >
-              <FastForward className="w-3.5 h-3.5 inline mr-1 text-zinc-400" />
-              <span className="hidden sm:inline">Fast Sim</span>
+              <FastForward className="w-3.5 h-3.5 text-zinc-400" />
+              <span className="hidden sm:inline">Sim All</span>
             </button>
 
             <button
               onClick={onClose}
               className="p-1.5 rounded-lg bg-zinc-800 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+              aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
 
         {/* Fixtures Progression Strip */}
-        <div className="px-4 py-2 bg-zinc-950/80 border-b border-zinc-800 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+        <div className="px-3 sm:px-4 py-2 bg-zinc-950/80 border-b border-zinc-800 flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
           {fixtures.map((fix, idx) => {
             const isDone = idx < currentMatchIndex;
             const res = isDone ? matchResults[idx] : idx === currentMatchIndex && isMatchFinished ? simulatedMatchData : null;
@@ -183,7 +185,7 @@ export default function SimulationModal({
             return (
               <div
                 key={fix.matchNumber}
-                className={`flex-shrink-0 w-7 h-7 rounded-md flex items-center justify-center font-sports text-xs font-bold transition-all ${
+                className={`flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-md flex items-center justify-center font-sports text-[10px] sm:text-xs font-bold transition-all ${
                   res?.isWin
                     ? 'bg-emerald-500 text-zinc-950 font-black'
                     : res && !res.isWin
@@ -200,29 +202,29 @@ export default function SimulationModal({
         </div>
 
         {/* Main Simulation View */}
-        <div className="p-3 sm:p-5 overflow-y-auto flex-1 flex flex-col gap-3.5">
+        <div className="p-3 sm:p-5 overflow-y-auto flex-1 flex flex-col gap-3 sm:gap-3.5">
           {/* Opponent Card */}
-          <div className="rounded-xl p-3.5 bg-zinc-950 border border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <h3 className="text-base font-bold text-white">
+          <div className="rounded-xl p-3 sm:p-3.5 bg-zinc-950 border border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+            <div className="min-w-0">
+              <h3 className="text-sm sm:text-base font-bold text-white truncate">
                 {currentFixture?.opponentName}
               </h3>
-              <p className="text-xs text-zinc-400 mt-0.5">
+              <p className="text-[11px] sm:text-xs text-zinc-400 mt-0.5 truncate">
                 {currentFixture?.venue} • <span className="text-zinc-300">{currentFixture?.pitchName || currentFixture?.pitchType}</span>
               </p>
             </div>
 
-            <div className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-1.5 self-start sm:self-auto text-xs">
+            <div className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-lg px-2.5 sm:px-3 py-1.5 self-start sm:self-auto text-xs shrink-0">
               <div>
-                <span className="text-[10px] text-zinc-500 uppercase block">Your Odds</span>
-                <span className="font-bold font-sports text-zinc-100">
+                <span className="text-[9px] sm:text-[10px] text-zinc-500 uppercase block">Your Odds</span>
+                <span className="font-bold font-sports text-zinc-100 text-xs sm:text-sm">
                   {simulatedMatchData?.odds.userOdds || '1.45'}
                 </span>
               </div>
               <div className="h-5 w-px bg-zinc-800" />
               <div>
-                <span className="text-[10px] text-zinc-500 uppercase block">Opponent</span>
-                <span className="font-bold font-sports text-zinc-400">
+                <span className="text-[9px] sm:text-[10px] text-zinc-500 uppercase block">Opponent</span>
+                <span className="font-bold font-sports text-zinc-400 text-xs sm:text-sm">
                   {simulatedMatchData?.odds.opponentOdds || '2.80'}
                 </span>
               </div>
@@ -230,88 +232,73 @@ export default function SimulationModal({
           </div>
 
           {/* Broadcast Scoreboard Arena */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-3.5">
             {/* Main Score Area */}
-            <div className="lg:col-span-7 bg-zinc-950 border border-zinc-800 rounded-xl p-4 flex flex-col justify-between">
+            <div className="lg:col-span-7 bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 sm:p-4 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+                <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 sm:pb-3">
                   <div>
-                    <span className="text-[10px] uppercase font-semibold text-zinc-500">Your Innings</span>
+                    <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-zinc-500">Your Innings</span>
                     <div className="flex items-baseline gap-2 mt-0.5">
-                      <span className="text-3xl font-black font-sports text-white">
+                      <span className="text-2xl sm:text-3xl font-black font-sports text-white">
                         {activeRuns}/{activeWkts}
                       </span>
-                      <span className="text-sm font-semibold text-zinc-400 font-sports">
+                      <span className="text-xs sm:text-sm font-semibold text-zinc-400 font-sports">
                         ({activeOvers} ov)
                       </span>
                     </div>
                   </div>
 
                   <div className="text-right">
-                    <span className="text-[10px] uppercase font-semibold text-zinc-500">{currentFixture?.shortName} Target</span>
-                    <div className="text-lg font-bold font-sports text-zinc-300 mt-0.5">
+                    <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-zinc-500">Target / Opponent</span>
+                    <span className="text-sm sm:text-base font-bold font-sports text-zinc-300 block mt-0.5">
                       {simulatedMatchData?.opponentScore}
-                    </div>
+                    </span>
                   </div>
                 </div>
 
-                {/* Active Players Box */}
-                <div className="grid grid-cols-2 gap-2 my-3 text-xs">
-                  <div className="bg-zinc-900 border border-zinc-800 p-2.5 rounded-lg">
-                    <span className="text-[10px] text-zinc-500 block">Striker</span>
-                    <strong className="text-zinc-200 font-medium truncate block">
-                      {currentEvent?.strikerName || 'Opening Bat'}
-                    </strong>
+                {/* Current Active Ball Details */}
+                <div className="py-2.5 sm:py-3 flex flex-col gap-1.5">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-zinc-400">
+                      Striker: <strong className="text-white">{currentEvent?.strikerName || 'Opener'}</strong>
+                    </span>
+                    <span className="text-zinc-400">
+                      Bowler: <strong className="text-white">{currentEvent?.bowlerName || 'Pacer'}</strong>
+                    </span>
                   </div>
 
-                  <div className="bg-zinc-900 border border-zinc-800 p-2.5 rounded-lg">
-                    <span className="text-[10px] text-zinc-500 block">Bowler</span>
-                    <strong className="text-zinc-200 font-medium truncate block">
-                      {currentEvent?.bowlerName || currentFixture?.keyPlayers[0]}
-                    </strong>
+                  <div className="p-2 sm:p-2.5 rounded-lg bg-zinc-900 border border-zinc-800/80 text-xs">
+                    <span className="text-[11px] text-zinc-400 font-medium">
+                      {currentEvent?.commentary || 'Match underway...'}
+                    </span>
                   </div>
                 </div>
-
-                {/* Live Delivery Event */}
-                {currentEvent && (
-                  <div className={`p-2.5 rounded-lg border text-center text-xs transition-all ${
-                    currentEvent.eventType === 'SIX'
-                      ? 'bg-zinc-900 border-zinc-600 text-amber-300 font-bold'
-                      : currentEvent.eventType === 'FOUR'
-                      ? 'bg-zinc-900 border-zinc-700 text-zinc-100 font-bold'
-                      : currentEvent.eventType === 'WICKET'
-                      ? 'bg-red-950/60 border-red-800 text-red-300 font-bold'
-                      : 'bg-zinc-900/60 border-zinc-800/80 text-zinc-400'
-                  }`}>
-                    {currentEvent.commentary}
-                  </div>
-                )}
               </div>
 
-              {/* Live Win Probability Bar */}
-              <div className="mt-4 pt-3 border-t border-zinc-800/80">
-                <div className="flex items-center justify-between text-[11px] mb-1 text-zinc-400 font-medium">
-                  <span className="text-zinc-200">Your XI: {liveWinProb}%</span>
-                  <span className="text-zinc-500 text-[10px]">Win Predictor</span>
-                  <span className="text-zinc-400">{currentFixture?.shortName}: {100 - liveWinProb}%</span>
+              {/* Win Predictor Bar */}
+              <div className="pt-2 border-t border-zinc-800/80 mt-1">
+                <div className="flex items-center justify-between text-[10px] text-zinc-400 mb-1 font-sports">
+                  <span>Win Predictor: <strong className="text-emerald-400">{liveWinProb}%</strong></span>
+                  <span>Opponent: <strong className="text-zinc-400">{100 - liveWinProb}%</strong></span>
                 </div>
-                <div className="w-full h-1.5 rounded-full bg-zinc-800 overflow-hidden flex">
-                  <div className="h-full bg-zinc-100 transition-all duration-200" style={{ width: `${liveWinProb}%` }} />
+                <div className="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden flex">
+                  <div className="h-full bg-emerald-500 transition-all duration-200" style={{ width: `${liveWinProb}%` }} />
                   <div className="h-full bg-zinc-700 transition-all duration-200" style={{ width: `${100 - liveWinProb}%` }} />
                 </div>
               </div>
             </div>
 
             {/* Commentary Feed */}
-            <div className="lg:col-span-5 bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 flex flex-col justify-between">
+            <div className="lg:col-span-5 bg-zinc-950 border border-zinc-800 rounded-xl p-3 sm:p-3.5 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-semibold text-zinc-400 uppercase block mb-2">
+                <span className="text-[11px] sm:text-xs font-semibold text-zinc-400 uppercase block mb-1.5 sm:mb-2">
                   Match Timeline
                 </span>
 
                 <div
                   ref={commentaryContainerRef}
-                  className="space-y-1.5 max-h-48 overflow-y-auto pr-1 text-xs"
+                  className="space-y-1.5 max-h-36 sm:max-h-48 overflow-y-auto pr-1 text-xs"
                 >
                   {simulatedMatchData?.ballByBallEvents.slice(0, playbackIndex).map((ev, idx) => (
                     <div key={idx} className="flex items-start gap-1.5 text-[11px] border-b border-zinc-900 pb-1 text-zinc-300">
@@ -326,11 +313,11 @@ export default function SimulationModal({
 
               {/* Mini Over Chart */}
               <div className="mt-2 pt-2 border-t border-zinc-800/80">
-                <div className="flex items-end gap-1 h-8 bg-zinc-900 p-1 rounded border border-zinc-800">
+                <div className="flex items-end gap-0.5 sm:gap-1 h-8 bg-zinc-900 p-1 rounded border border-zinc-800 overflow-x-auto no-scrollbar">
                   {simulatedMatchData?.overGraph.slice(0, Math.ceil(playbackIndex / 6)).map((og, idx) => (
                     <div
                       key={idx}
-                      className="flex-1 bg-zinc-400 hover:bg-zinc-200 rounded-xs transition-all"
+                      className="flex-1 min-w-[6px] bg-zinc-400 hover:bg-zinc-200 rounded-xs transition-all"
                       style={{ height: `${Math.min(100, Math.max(15, (og.overRuns / 24) * 100))}%` }}
                       title={`Over ${og.over}: ${og.overRuns} runs`}
                     />
@@ -342,7 +329,7 @@ export default function SimulationModal({
 
           {/* Post Match Result Banner */}
           {isMatchFinished && simulatedMatchData && (
-            <div className={`p-3.5 rounded-xl border flex flex-col sm:flex-row items-center justify-between gap-3 ${
+            <div className={`p-3 sm:p-3.5 rounded-xl border flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 ${
               simulatedMatchData.isWin
                 ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300'
                 : 'bg-red-950/40 border-red-800/80 text-red-300'
@@ -354,16 +341,16 @@ export default function SimulationModal({
                   <XCircle className="w-5 h-5 text-red-400 shrink-0" />
                 )}
                 <div>
-                  <h4 className="text-sm font-bold text-white">
+                  <h4 className="text-xs sm:text-sm font-bold text-white">
                     {simulatedMatchData.marginText}
                   </h4>
-                  <span className="text-xs text-zinc-400">+{simulatedMatchData.totalTeamFantasyPoints} Fantasy Points</span>
+                  <span className="text-[11px] text-zinc-400">+{simulatedMatchData.totalTeamFantasyPoints} Fantasy Points</span>
                 </div>
               </div>
 
               <button
                 onClick={() => setShowFullScorecard(!showFullScorecard)}
-                className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs font-medium text-white border border-zinc-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs font-medium text-white border border-zinc-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Eye className="w-3.5 h-3.5 text-zinc-400" />
                 <span>{showFullScorecard ? 'Hide' : 'Scorecard'}</span>
@@ -373,11 +360,11 @@ export default function SimulationModal({
 
           {/* Full Detailed Scorecard */}
           {showFullScorecard && simulatedMatchData && (
-            <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 overflow-x-auto">
+            <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-3 sm:p-3.5 overflow-x-auto">
               <h4 className="text-xs font-bold text-zinc-300 uppercase mb-2">
                 Batting Scorecard
               </h4>
-              <table className="w-full text-left text-xs">
+              <table className="w-full text-left text-xs min-w-[340px]">
                 <thead>
                   <tr className="border-b border-zinc-800 text-zinc-500 font-sports">
                     <th className="py-1">Batter</th>
@@ -412,9 +399,9 @@ export default function SimulationModal({
         </div>
 
         {/* Footer Playback Controls */}
-        <div className="p-3.5 sm:p-4 bg-zinc-950 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3">
+        <div className="p-3 sm:p-4 bg-zinc-950 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 shrink-0">
           {!isMatchFinished ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between sm:justify-start gap-2 w-full sm:w-auto">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
                 className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold flex items-center gap-1 border border-zinc-700 transition-colors cursor-pointer"
@@ -447,16 +434,16 @@ export default function SimulationModal({
               </button>
             </div>
           ) : (
-            <span className="text-xs text-zinc-400">
+            <span className="text-xs text-zinc-400 text-center sm:text-left">
               {currentMatchIndex + 1 < totalMatches ? `Next fixture: Match ${currentMatchIndex + 2}` : 'Campaign finished'}
             </span>
           )}
 
-          <div>
+          <div className="w-full sm:w-auto">
             <button
               onClick={handleNextMatch}
               disabled={!isMatchFinished}
-              className={`px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
+              className={`w-full sm:w-auto px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                 isMatchFinished
                   ? 'bg-zinc-100 hover:bg-white text-zinc-950 shadow-sm'
                   : 'bg-zinc-800 text-zinc-500 border border-zinc-800 cursor-not-allowed'
