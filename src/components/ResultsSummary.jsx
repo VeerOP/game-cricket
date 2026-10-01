@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 import { sound } from '../engine/soundEffects';
-import { Trophy, Share2, RotateCcw, Check, Award } from 'lucide-react';
+import { Trophy, Share2, RotateCcw, Check, Award, Shield, ChevronRight } from 'lucide-react';
+import PointsTableModal from './PointsTableModal';
 
 export default function ResultsSummary({
   matchResults,
@@ -9,14 +10,19 @@ export default function ResultsSummary({
   lineup,
   captainId,
   viceCaptainId,
+  standings = [],
+  activeLeague = 'IPL',
   onResetSeason
 }) {
   const [copied, setCopied] = useState(false);
+  const [showPointsTable, setShowPointsTable] = useState(false);
 
   const winsCount = matchResults.filter(m => m.isWin).length;
   const lossesCount = matchResults.filter(m => !m.isWin).length;
   const totalMatches = matchResults.length;
   const isInvincible = winsCount === totalMatches && totalMatches > 0;
+
+  const userStanding = standings.find(t => t.isUser);
 
   useEffect(() => {
     sound.init();
@@ -65,7 +71,7 @@ export default function ResultsSummary({
   const handleShare = () => {
     const text = `🏏 16-0: The Invincibles Draft\n` +
       `${isInvincible ? '🏆 16-0 UNDEFEATED CHAMPIONS' : `Record: ${winsCount}W - ${lossesCount}L`}\n` +
-      `Fantasy Score: ${totalFantasyPoints.toLocaleString()} pts\n` +
+      `League Rank: #${userStanding?.rank || 1} • Fantasy: ${totalFantasyPoints.toLocaleString()} pts\n` +
       `Top Run Scorer: ${orangeCap?.player.name} (${orangeCap?.runs}r)\n` +
       `Top Wickets: ${purpleCap?.player.name} (${purpleCap?.wickets}w)\n` +
       `Captain: ${captainPlayer ? captainPlayer.name : 'N/A'}`;
@@ -85,13 +91,25 @@ export default function ResultsSummary({
 
         {/* Title */}
         <h2 className="text-xl sm:text-3xl font-bold text-white tracking-tight font-sports uppercase">
-          {isInvincible ? '16-0 Invincible Champions' : 'Season Complete'}
+          {isInvincible ? '16-0 Invincible Champions' : 'Season Campaign Concluded'}
         </h2>
         <p className="text-xs text-zinc-400 mt-0.5 sm:mt-1 max-w-sm">
           {isInvincible
             ? 'Flawless run. You completed the campaign without suffering a single defeat.'
             : `Finished with ${winsCount} Wins and ${lossesCount} Losses.`}
         </p>
+
+        {/* Qualification Status Badge */}
+        {userStanding && (
+          <div className="mt-3 px-3 py-1.5 rounded-xl bg-zinc-950 border border-zinc-800 flex items-center gap-2 text-xs">
+            <span className="font-bold text-zinc-300">Final League Standing:</span>
+            <span className="text-amber-400 font-sports font-bold text-sm">Rank #{userStanding.rank}</span>
+            <span className="text-zinc-600">•</span>
+            <span className={`px-2 py-0.5 rounded text-[11px] ${userStanding.statusBadgeColor}`}>
+              {userStanding.statusLabel}
+            </span>
+          </div>
+        )}
 
         {/* Stats Grid */}
         <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 my-4 sm:my-5">
@@ -127,7 +145,7 @@ export default function ResultsSummary({
         {/* Honors Box */}
         <div className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 sm:p-3.5 mb-4 sm:mb-5 text-left">
           <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block mb-2 font-sports">
-            Individual Awards
+            Individual Honors
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
@@ -154,11 +172,19 @@ export default function ResultsSummary({
         {/* Actions */}
         <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
           <button
+            onClick={() => setShowPointsTable(true)}
+            className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <Trophy className="w-3.5 h-3.5 text-amber-400" />
+            <span>Final Points Table</span>
+          </button>
+
+          <button
             onClick={handleShare}
             className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold flex items-center justify-center gap-1.5 border border-zinc-700 transition-colors cursor-pointer"
           >
             {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
-            <span>{copied ? 'Copied' : 'Share Card'}</span>
+            <span>{copied ? 'Copied' : 'Share Summary'}</span>
           </button>
 
           <button
@@ -166,10 +192,20 @@ export default function ResultsSummary({
             className="w-full sm:w-auto px-6 py-2 sm:py-2.5 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Play Again</span>
+            <span>New Campaign</span>
           </button>
         </div>
       </div>
+
+      {showPointsTable && (
+        <PointsTableModal
+          standings={standings}
+          activeLeague={activeLeague}
+          currentRound={totalMatches}
+          totalRounds={totalMatches}
+          onClose={() => setShowPointsTable(false)}
+        />
+      )}
     </div>
   );
 }

@@ -45,7 +45,8 @@ export default function PlayerDrawer({
     setSelectedPlayer(player);
     const compatible = getCompatibleSlots(player);
     const emptyCompat = compatible.find(s => !lineup[s.id]);
-    setTargetSlotId(emptyCompat ? emptyCompat.id : (compatible[0]?.id || null));
+    const anyEmpty = slots.find(s => !lineup[s.id]);
+    setTargetSlotId(emptyCompat ? emptyCompat.id : (anyEmpty ? anyEmpty.id : null));
   };
 
   const handleConfirmDraft = () => {
@@ -216,9 +217,9 @@ export default function PlayerDrawer({
                 onChange={(e) => setTargetSlotId(Number(e.target.value))}
                 className="bg-zinc-900 border border-zinc-700 text-white rounded-lg px-2.5 py-1.5 text-xs font-semibold focus:outline-none flex-1 sm:flex-initial"
               >
-                {getCompatibleSlots(selectedPlayer).map(slot => (
+                {(slots.filter(s => !lineup[s.id]).length > 0 ? slots.filter(s => !lineup[s.id]) : slots).map(slot => (
                   <option key={slot.id} value={slot.id}>
-                    {slot.name} {lineup[slot.id] ? `(Swap ${lineup[slot.id].name})` : '(Open)'}
+                    {slot.name} {lineup[slot.id] ? `(${lineup[slot.id].name})` : '(Open Slot)'}
                   </option>
                 ))}
               </select>

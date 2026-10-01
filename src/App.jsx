@@ -6,13 +6,15 @@ import PlayerDrawer from './components/PlayerDrawer';
 import SimulationModal from './components/SimulationModal';
 import ResultsSummary from './components/ResultsSummary';
 import RulesAndOddsModal from './components/RulesAndOddsModal';
+import PointsTableModal from './components/PointsTableModal';
 import MultiplayerMode from './components/MultiplayerMode';
 import { ALL_CRICKET_TEAMS, SQUAD_SLOTS } from './data/franchises';
 import { getFixtureScheduleForMode } from './data/opponents';
-import { RotateCcw } from 'lucide-react';
+import { initializeTournamentStandings, updateTournamentStandingsAfterMatch } from './engine/standingsEngine';
+import { RotateCcw, Trophy } from 'lucide-react';
 
 export default function App() {
-  const [activeLeague, setActiveLeague] = useState('ALL_STARS');
+  const [activeLeague, setActiveLeague] = useState('IPL');
   const [isProMode, setIsProMode] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isMultiplayer, setIsMultiplayer] = useState(false);
@@ -23,7 +25,10 @@ export default function App() {
   const [viceCaptainId, setViceCaptainId] = useState(null);
   const [currentStreak, setCurrentStreak] = useState(0);
   const [bestRecord, setBestRecord] = useState('0-0');
-  const [impactSubAvailable, setImpactSubAvailable] = useState(true);
+
+  // Standings & Points Table state
+  const [standings, setStandings] = useState(() => initializeTournamentStandings('IPL'));
+  const [showPointsTableModal, setShowPointsTableModal] = useState(false);
 
   // Reel & Draft states
   const [isSpinning, setIsSpinning] = useState(false);
@@ -42,6 +47,11 @@ export default function App() {
     const savedStreak = localStorage.getItem('invincibles_streak');
     if (savedStreak) setCurrentStreak(Number(savedStreak));
   }, []);
+
+  // Update standings whenever active league changes
+  useEffect(() => {
+    setStandings(initializeTournamentStandings(activeLeague));
+  }, [activeLeague]);
 
   const filteredTeams = useMemo(() => {
     return activeLeague === 'ALL_STARS'
@@ -83,11 +93,32 @@ export default function App() {
     });
   };
 
-  const handleTriggerImpactSub = () => {
-    if (!impactSubAvailable) return;
-    setImpactSubAvailable(false);
-    const randomTeam = filteredTeams[Math.floor(Math.random() * filteredTeams.length)];
-    setSpunTeam(randomTeam);
+  // Batting Order: Move player UP in the order
+  const handleMovePlayerUp = (slotId) => {
+    const idx = SQUAD_SLOTS.findIndex(s => s.id === slotId);
+    if (idx <= 0) return;
+    const prevSlotId = SQUAD_SLOTS[idx - 1].id;
+    setLineup(prev => {
+      const copy = { ...prev };
+      const temp = copy[slotId];
+      copy[slotId] = copy[prevSlotId];
+      copy[prevSlotId] = temp;
+      return copy;
+    });
+  };
+
+  // Batting Order: Move player DOWN in the order
+  const handleMovePlayerDown = (slotId) => {
+    const idx = SQUAD_SLOTS.findIndex(s => s.id === slotId);
+    if (idx >= SQUAD_SLOTS.length - 1) return;
+    const nextSlotId = SQUAD_SLOTS[idx + 1].id;
+    setLineup(prev => {
+      const copy = { ...prev };
+      const temp = copy[slotId];
+      copy[slotId] = copy[nextSlotId];
+      copy[nextSlotId] = temp;
+      return copy;
+    });
   };
 
   const handleResetSquad = () => {
@@ -98,7 +129,7 @@ export default function App() {
     setCaptainId(null);
     setViceCaptainId(null);
     setSpunTeam(null);
-    setImpactSubAvailable(true);
+    setStandings(initializeTournamentStandings(activeLeague));
   };
 
   const handleLeagueChange = (newLeague) => {
@@ -110,11 +141,17 @@ export default function App() {
     setCaptainId(null);
     setViceCaptainId(null);
     setSpunTeam(null);
-    setImpactSubAvailable(true);
+    setStandings(initializeTournamentStandings(newLeague));
   };
 
   const handleStartSimulation = () => {
     setIsSimulating(true);
+  };
+
+  // Called after every match in the simulation modal to update standings dynamically
+  const handleUpdateStandings = (matchOutcome, matchIndex) => {
+    const updated = updateTournamentStandingsAfterMatch(standings, matchOutcome, matchIndex, activeLeague);
+    setStandings(updated.standings);
   };
 
   const handleCompleteSeason = (results, fantasyPoints) => {
@@ -150,10 +187,11 @@ export default function App() {
     setCaptainId(null);
     setViceCaptainId(null);
     setSpunTeam(null);
-    setImpactSubAvailable(true);
+    setStandings(initializeTournamentStandings(activeLeague));
   };
 
   const activePicksCount = Object.values(lineup).filter(Boolean).length;
+  const userStanding = standings.find(t => t.isUser);
 
   if (isMultiplayer) {
     return (
@@ -174,6 +212,7 @@ export default function App() {
         bestRecord={bestRecord}
         currentStreak={currentStreak}
         onOpenRules={() => setShowRulesModal(true)}
+        onOpenPointsTable={() => setShowPointsTableModal(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
         isMultiplayer={isMultiplayer}
@@ -185,24 +224,39 @@ export default function App() {
         {/* Sub-header Bar */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-zinc-900 border border-zinc-800 rounded-2xl px-4 py-3">
           <div>
-            <h2 className="text-sm font-bold text-white tracking-tight flex items-center gap-2">
+            <h2 className="text-sm font-bold text-white tracking-tight flex items-center gap-2 flex-wrap">
               <span>{activeLeague === 'ALL_STARS' ? 'Global Cricket Draft' : activeLeague.replace('_', ' ')}</span>
               <span className="text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 font-normal">
-                {currentFixtures.length} Matches Schedule
+                {currentFixtures.length} Matches Campaign
               </span>
+              {userStanding && (
+                <span className="text-[11px] px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-700/80 text-emerald-300 font-bold font-sports">
+                  Current Rank: #{userStanding.rank} ({userStanding.points} PTS)
+                </span>
+              )}
             </h2>
             <p className="text-xs text-zinc-400 mt-0.5">
-              Roll the mechanical slot reel to draw an era. Pick 1 player into your 11. Max 4 Overseas, Captain (2.0x), VC (1.5x).
+              Roll the mechanical slot reel to draw an era. Pick 1 player into your 11. Rearrange batting order freely. Max 4 Overseas, Captain (2.0x), VC (1.5x).
             </p>
           </div>
 
-          <button
-            onClick={handleResetSquad}
-            className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 text-xs font-medium border border-zinc-700/80 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>Reset Draft</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowPointsTableModal(true)}
+              className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-amber-400 text-xs font-semibold border border-zinc-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+            >
+              <Trophy className="w-3.5 h-3.5" />
+              <span>Points Table</span>
+            </button>
+
+            <button
+              onClick={handleResetSquad}
+              className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 text-xs font-medium border border-zinc-700/80 transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset Draft</span>
+            </button>
+          </div>
         </div>
 
         {/* Layout Grid: Slot Reel + Tactical Pitch */}
@@ -257,10 +311,12 @@ export default function App() {
               setCaptainId={setCaptainId}
               viceCaptainId={viceCaptainId}
               setViceCaptainId={setViceCaptainId}
+              onMovePlayerUp={handleMovePlayerUp}
+              onMovePlayerDown={handleMovePlayerDown}
               onRemovePlayer={handleRemovePlayer}
               onStartSimulation={handleStartSimulation}
-              onTriggerImpactSub={handleTriggerImpactSub}
-              impactSubAvailable={impactSubAvailable}
+              onOpenPointsTable={() => setShowPointsTableModal(true)}
+              userRank={userStanding?.rank || 1}
               isProMode={isProMode}
             />
           </div>
@@ -285,6 +341,9 @@ export default function App() {
           captainId={captainId}
           viceCaptainId={viceCaptainId}
           fixtures={currentFixtures}
+          activeLeague={activeLeague}
+          standings={standings}
+          onUpdateStandings={handleUpdateStandings}
           onCompleteSeason={handleCompleteSeason}
           onClose={() => setIsSimulating(false)}
         />
@@ -297,7 +356,18 @@ export default function App() {
           lineup={lineup}
           captainId={captainId}
           viceCaptainId={viceCaptainId}
+          standings={standings}
+          activeLeague={activeLeague}
           onResetSeason={handleResetSeason}
+        />
+      )}
+
+      {showPointsTableModal && (
+        <PointsTableModal
+          standings={standings}
+          activeLeague={activeLeague}
+          totalRounds={currentFixtures.length}
+          onClose={() => setShowPointsTableModal(false)}
         />
       )}
 

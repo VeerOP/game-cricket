@@ -1,7 +1,7 @@
 import React from 'react';
 import { CRICKET_LEAGUES } from '../data/franchises';
 import { sound } from '../engine/soundEffects';
-import { Trophy, Volume2, VolumeX, Shield, HelpCircle, Flame, Swords } from 'lucide-react';
+import { Trophy, Volume2, VolumeX, Shield, HelpCircle, Flame, Swords, Table } from 'lucide-react';
 
 export default function Header({
   activeLeague,
@@ -11,6 +11,7 @@ export default function Header({
   bestRecord,
   currentStreak,
   onOpenRules,
+  onOpenPointsTable,
   isMuted,
   setIsMuted,
   isMultiplayer,
@@ -34,16 +35,28 @@ export default function Header({
 
             <div className="min-w-0">
               <h1 className="text-sm sm:text-lg font-bold text-white tracking-tight leading-none font-sports truncate">
-                THE INVINCIBLES <span className="text-zinc-500 font-normal text-[10px] sm:text-xs uppercase font-sans">Draft</span>
+                THE INVINCIBLES <span className="text-zinc-500 font-normal text-[10px] sm:text-xs uppercase font-sans">Cricket</span>
               </h1>
               <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-0.5 hidden md:block truncate">
-                Achieve a flawless 16-0 undefeated season across global cricket history
+                Draft an undefeated Starting XI across IPL, PSL, SA20, CPL, BBL & ICC World Cups
               </p>
             </div>
           </div>
 
           {/* Right Utilities & Mode Switchers */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* Points Table Button */}
+            {!isMultiplayer && onOpenPointsTable && (
+              <button
+                onClick={onOpenPointsTable}
+                className="px-2 sm:px-2.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-amber-400 text-[11px] sm:text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
+                title="View Qualifiers & Standings Table"
+              >
+                <Trophy className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="hidden xs:inline">Points Table</span>
+              </button>
+            )}
+
             {/* Multiplayer Clash Switch */}
             <button
               onClick={() => setIsMultiplayer(!isMultiplayer)}
