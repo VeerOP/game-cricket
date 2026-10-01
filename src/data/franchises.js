@@ -1,0 +1,600 @@
+// Exhaustive Global Cricket Database across Leagues & ICC World Cups
+// Every team has a full 11-player authentic match roster
+
+export const CRICKET_LEAGUES = [
+  { id: 'ALL_STARS', name: 'Global All-Stars', icon: '🌍', desc: 'Cross-era mix of IPL, BBL, PSL, SA20, CPL, The Hundred & World Cups' },
+  { id: 'IPL', name: 'IPL (Indian Premier League)', icon: '🇮🇳', desc: 'Iconic IPL franchises spanning 2008 to 2024' },
+  { id: 'T20_WC', name: 'T20 World Cup', icon: '🏆', desc: 'All T20 World Cup Champions & Finalists (2007–2024)' },
+  { id: 'ODI_WC', name: 'ODI World Cup', icon: '👑', desc: 'Legendary 50-Over World Cup Squads (1975–2023)' },
+  { id: 'BBL', name: 'BBL (Big Bash League)', icon: '🇦🇺', desc: 'Australia\'s premier T20 tournament champions' },
+  { id: 'PSL', name: 'PSL (Pakistan Super League)', icon: '🇵🇰', desc: 'Pakistan Super League champions & pace powerhouses' },
+  { id: 'SA20', name: 'SA20 League', icon: '🇿🇦', desc: 'South Africa\'s explosive T20 tournament' },
+  { id: 'CPL', name: 'CPL (Caribbean Premier League)', icon: '🌴', desc: 'Caribbean party cricket & power-hitting dynasties' },
+  { id: 'THE_HUNDRED', name: 'The Hundred', icon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', desc: 'England\'s 100-ball electric competition' },
+  { id: 'ILT20', name: 'ILT20 (UAE)', icon: '🇦🇪', desc: 'International League T20 champions' }
+];
+
+export const ALL_CRICKET_TEAMS = [
+  // ================= IPL FRANCHISES =================
+  {
+    id: 'rcb_2016',
+    league: 'IPL',
+    name: 'Royal Challengers Bangalore',
+    shortName: 'RCB',
+    year: '2016',
+    themeColor: '#EC1C24',
+    secondaryColor: '#000000',
+    textColor: '#FFFFFF',
+    accentColor: '#DAA520',
+    banner: 'Run Machine Era (Peak Kohli & ABD)',
+    players: [
+      { id: 'rcb16_kohli', name: 'Virat Kohli', role: 'OPENER', country: 'India', isOverseas: false, batRating: 99, bowlRating: 45, fieldRating: 92, overall: 99, rarity: 'LEGEND', specialBadge: 'Orange Cap (973 Runs, 4 100s)', seasonStats: { runs: 973, avg: 81.08, sr: 152.03, hundreds: 4, fifties: 7, wkts: 0, econ: 0 } },
+      { id: 'rcb16_ab', name: 'AB de Villiers', role: 'MIDDLE_ORDER', country: 'South Africa', isOverseas: true, batRating: 98, bowlRating: 30, fieldRating: 96, overall: 98, rarity: 'LEGEND', specialBadge: 'Mr. 360 (687 Runs, 168.8 SR)', seasonStats: { runs: 687, avg: 52.84, sr: 168.79, hundreds: 1, fifties: 6, wkts: 0, econ: 0 } },
+      { id: 'rcb16_gayle', name: 'Chris Gayle', role: 'OPENER', country: 'West Indies', isOverseas: true, batRating: 91, bowlRating: 55, fieldRating: 72, overall: 91, rarity: 'ICONIC', specialBadge: 'Universe Boss (76 in Final)', seasonStats: { runs: 227, avg: 22.70, sr: 151.33, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'rcb16_klrahul', name: 'KL Rahul', role: 'WK', country: 'India', isOverseas: false, batRating: 88, bowlRating: 25, fieldRating: 86, overall: 88, rarity: 'DIAMOND', specialBadge: 'Breakout Season (397 Runs)', seasonStats: { runs: 397, avg: 44.11, sr: 146.49, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'rcb16_watson', name: 'Shane Watson', role: 'PACE_ALL', country: 'Australia', isOverseas: true, batRating: 83, bowlRating: 89, fieldRating: 85, overall: 89, rarity: 'DIAMOND', specialBadge: '20 Wickets All-Rounder', seasonStats: { runs: 179, avg: 13.76, sr: 133.58, hundreds: 0, fifties: 0, wkts: 20, econ: 8.58 } },
+      { id: 'rcb16_chahal', name: 'Yuzvendra Chahal', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 28, bowlRating: 93, fieldRating: 78, overall: 93, rarity: 'ICONIC', specialBadge: 'Chinnaswamy Wizard (21 Wkts)', seasonStats: { runs: 4, avg: 4.0, sr: 66.6, hundreds: 0, fifties: 0, wkts: 21, econ: 8.15 } },
+      { id: 'rcb16_aravind', name: 'Sreenath Aravind', role: 'PACER', country: 'India', isOverseas: false, batRating: 30, bowlRating: 82, fieldRating: 74, overall: 82, rarity: 'GOLD', specialBadge: 'Left-arm Swing (11 Wkts)', seasonStats: { runs: 12, avg: 6.0, sr: 85.7, hundreds: 0, fifties: 0, wkts: 11, econ: 8.44 } },
+      { id: 'rcb16_binny', name: 'Stuart Binny', role: 'PACE_ALL', country: 'India', isOverseas: false, batRating: 76, bowlRating: 77, fieldRating: 80, overall: 78, rarity: 'GOLD', specialBadge: 'Utility All-Rounder', seasonStats: { runs: 63, avg: 21.0, sr: 157.5, hundreds: 0, fifties: 0, wkts: 4, econ: 8.64 } },
+      { id: 'rcb16_jordan', name: 'Chris Jordan', role: 'PACER', country: 'England', isOverseas: true, batRating: 45, bowlRating: 85, fieldRating: 90, overall: 84, rarity: 'GOLD', specialBadge: 'Death Specialist (11 Wkts)', seasonStats: { runs: 11, avg: 5.5, sr: 91.6, hundreds: 0, fifties: 0, wkts: 11, econ: 9.12 } },
+      { id: 'rcb16_baby', name: 'Sachin Baby', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 79, bowlRating: 30, fieldRating: 85, overall: 79, rarity: 'GOLD', specialBadge: 'Middle Order Anchor', seasonStats: { runs: 119, avg: 29.75, sr: 150.63, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'rcb16_abdulla', name: 'Iqbal Abdulla', role: 'SPIN_ALL', country: 'India', isOverseas: false, batRating: 75, bowlRating: 82, fieldRating: 82, overall: 80, rarity: 'GOLD', specialBadge: 'Q1 Hero (33* & 6 Wkts)', seasonStats: { runs: 38, avg: 38.0, sr: 131.0, hundreds: 0, fifties: 0, wkts: 6, econ: 8.68 } }
+    ]
+  },
+  {
+    id: 'csk_2011',
+    league: 'IPL',
+    name: 'Chennai Super Kings',
+    shortName: 'CSK',
+    year: '2011',
+    themeColor: '#FDB913',
+    secondaryColor: '#00539C',
+    textColor: '#1A1A1A',
+    accentColor: '#F7931E',
+    banner: 'Back-to-Back Champions & Chepauk Fortress',
+    players: [
+      { id: 'csk11_dhoni', name: 'MS Dhoni', role: 'WK', country: 'India', isOverseas: false, batRating: 95, bowlRating: 35, fieldRating: 98, overall: 96, rarity: 'LEGEND', specialBadge: 'Thala Captain (42.4 Avg, 158.7 SR)', seasonStats: { runs: 392, avg: 42.44, sr: 158.70, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'csk11_raina', name: 'Suresh Raina', role: 'TOP_ORDER', country: 'India', isOverseas: false, batRating: 94, bowlRating: 78, fieldRating: 95, overall: 94, rarity: 'LEGEND', specialBadge: 'Mr. IPL (438 Runs, 5 Wkts)', seasonStats: { runs: 438, avg: 31.28, sr: 134.76, hundreds: 0, fifties: 4, wkts: 5, econ: 7.25 } },
+      { id: 'csk11_hussey', name: 'Michael Hussey', role: 'OPENER', country: 'Australia', isOverseas: true, batRating: 93, bowlRating: 30, fieldRating: 90, overall: 93, rarity: 'ICONIC', specialBadge: 'Mr. Cricket (492 Runs, 41.0 Avg)', seasonStats: { runs: 492, avg: 41.00, sr: 118.84, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'csk11_vijay', name: 'Murali Vijay', role: 'OPENER', country: 'India', isOverseas: false, batRating: 89, bowlRating: 40, fieldRating: 82, overall: 89, rarity: 'DIAMOND', specialBadge: 'Final MoM (95 off 52)', seasonStats: { runs: 434, avg: 27.12, sr: 128.02, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'csk11_ashwin', name: 'Ravichandran Ashwin', role: 'SPIN_ALL', country: 'India', isOverseas: false, batRating: 72, bowlRating: 94, fieldRating: 80, overall: 93, rarity: 'LEGEND', specialBadge: 'Powerplay Carrom Ball (20 Wkts, ER 6.15)', seasonStats: { runs: 38, avg: 9.5, sr: 105.5, hundreds: 0, fifties: 0, wkts: 20, econ: 6.15 } },
+      { id: 'csk11_bravo', name: 'Dwayne Bravo', role: 'PACE_ALL', country: 'West Indies', isOverseas: true, batRating: 85, bowlRating: 90, fieldRating: 92, overall: 89, rarity: 'ICONIC', specialBadge: 'Death Over Slower Ball', seasonStats: { runs: 112, avg: 28.0, sr: 136.5, hundreds: 0, fifties: 0, wkts: 6, econ: 7.82 } },
+      { id: 'csk11_albie', name: 'Albie Morkel', role: 'PACE_ALL', country: 'South Africa', isOverseas: true, batRating: 84, bowlRating: 86, fieldRating: 83, overall: 86, rarity: 'DIAMOND', specialBadge: 'Big Hitter (19 Wkts, 153 SR)', seasonStats: { runs: 138, avg: 23.0, sr: 153.3, hundreds: 0, fifties: 0, wkts: 19, econ: 7.91 } },
+      { id: 'csk11_bollinger', name: 'Doug Bollinger', role: 'PACER', country: 'Australia', isOverseas: true, batRating: 25, bowlRating: 90, fieldRating: 76, overall: 90, rarity: 'DIAMOND', specialBadge: '17 Wickets (ER 7.00)', seasonStats: { runs: 6, avg: 3.0, sr: 50.0, hundreds: 0, fifties: 0, wkts: 17, econ: 7.00 } },
+      { id: 'csk11_badrinath', name: 'Subramaniam Badrinath', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 88, bowlRating: 20, fieldRating: 84, overall: 86, rarity: 'DIAMOND', specialBadge: 'Crisis Man (396 Runs, 56.5 Avg)', seasonStats: { runs: 396, avg: 56.57, sr: 126.51, hundreds: 0, fifties: 5, wkts: 0, econ: 0 } },
+      { id: 'csk11_jakati', name: 'Shadab Jakati', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 30, bowlRating: 83, fieldRating: 78, overall: 82, rarity: 'GOLD', specialBadge: 'Left-Arm Spin (10 Wkts)', seasonStats: { runs: 2, avg: 2.0, sr: 50.0, hundreds: 0, fifties: 0, wkts: 10, econ: 7.64 } },
+      { id: 'csk11_saha', name: 'Wriddhiman Saha', role: 'WK', country: 'India', isOverseas: false, batRating: 82, bowlRating: 20, fieldRating: 92, overall: 83, rarity: 'GOLD', specialBadge: 'Backup Gloveman (115 Runs)', seasonStats: { runs: 115, avg: 23.0, sr: 109.52, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } }
+    ]
+  },
+  {
+    id: 'csk_2018',
+    league: 'IPL',
+    name: 'Chennai Super Kings',
+    shortName: 'CSK',
+    year: '2018',
+    themeColor: '#FDB913',
+    secondaryColor: '#00539C',
+    textColor: '#1A1A1A',
+    accentColor: '#F7931E',
+    banner: 'Dad\'s Army & Comeback Champions',
+    players: [
+      { id: 'csk18_watson', name: 'Shane Watson', role: 'OPENER', country: 'Australia', isOverseas: true, batRating: 96, bowlRating: 82, fieldRating: 84, overall: 96, rarity: 'LEGEND', specialBadge: 'Final Centurion (117* off 57, 555 Runs)', seasonStats: { runs: 555, avg: 39.64, sr: 154.59, hundreds: 2, fifties: 2, wkts: 6, econ: 8.96 } },
+      { id: 'csk18_rayudu', name: 'Ambati Rayudu', role: 'TOP_ORDER', country: 'India', isOverseas: false, batRating: 95, bowlRating: 20, fieldRating: 86, overall: 94, rarity: 'LEGEND', specialBadge: 'Career Year (602 Runs, 149.7 SR)', seasonStats: { runs: 602, avg: 43.00, sr: 149.75, hundreds: 1, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'csk18_dhoni', name: 'MS Dhoni', role: 'WK', country: 'India', isOverseas: false, batRating: 96, bowlRating: 20, fieldRating: 98, overall: 97, rarity: 'LEGEND', specialBadge: 'Peak Finisher (455 Runs, 75.8 Avg, 150.6 SR)', seasonStats: { runs: 455, avg: 75.83, sr: 150.66, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'csk18_bravo', name: 'Dwayne Bravo', role: 'PACE_ALL', country: 'West Indies', isOverseas: true, batRating: 88, bowlRating: 91, fieldRating: 92, overall: 91, rarity: 'ICONIC', specialBadge: 'Opening Night 68 (30) & 14 Wkts', seasonStats: { runs: 141, avg: 35.25, sr: 154.94, hundreds: 0, fifties: 1, wkts: 14, econ: 9.96 } },
+      { id: 'csk18_raina', name: 'Suresh Raina', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 92, bowlRating: 60, fieldRating: 94, overall: 92, rarity: 'ICONIC', specialBadge: '445 Runs in Title Run', seasonStats: { runs: 445, avg: 37.08, sr: 132.44, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'csk18_chahar', name: 'Deepak Chahar', role: 'PACER', country: 'India', isOverseas: false, batRating: 40, bowlRating: 89, fieldRating: 82, overall: 89, rarity: 'DIAMOND', specialBadge: 'Powerplay Knuckleball (10 Wkts, ER 7.28)', seasonStats: { runs: 50, avg: 16.6, sr: 166.6, hundreds: 0, fifties: 0, wkts: 10, econ: 7.28 } },
+      { id: 'csk18_ngidi', name: 'Lungi Ngidi', role: 'PACER', country: 'South Africa', isOverseas: true, batRating: 20, bowlRating: 92, fieldRating: 84, overall: 91, rarity: 'DIAMOND', specialBadge: '11 Wickets in 7 Matches (ER 6.00)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 11, econ: 6.00 } },
+      { id: 'csk18_thakur', name: 'Shardul Thakur', role: 'PACE_ALL', country: 'India', isOverseas: false, batRating: 75, bowlRating: 88, fieldRating: 85, overall: 88, rarity: 'DIAMOND', specialBadge: '16 Wickets & Q1 15* (5)', seasonStats: { runs: 15, avg: 15.0, sr: 300.0, hundreds: 0, fifties: 0, wkts: 16, econ: 9.23 } },
+      { id: 'csk18_jadeja', name: 'Ravindra Jadeja', role: 'SPIN_ALL', country: 'India', isOverseas: false, batRating: 85, bowlRating: 89, fieldRating: 99, overall: 90, rarity: 'ICONIC', specialBadge: 'ER 7.39 & Rocket Arm (11 Wkts)', seasonStats: { runs: 89, avg: 17.8, sr: 120.2, hundreds: 0, fifties: 0, wkts: 11, econ: 7.39 } },
+      { id: 'csk18_duplessis', name: 'Faf du Plessis', role: 'OPENER', country: 'South Africa', isOverseas: true, batRating: 90, bowlRating: 20, fieldRating: 96, overall: 90, rarity: 'DIAMOND', specialBadge: 'Qualifier 1 Hero (67* off 42)', seasonStats: { runs: 162, avg: 32.40, sr: 125.58, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'csk18_harbhajan', name: 'Harbhajan Singh', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 45, bowlRating: 86, fieldRating: 78, overall: 86, rarity: 'GOLD', specialBadge: 'Off-Spin Squeeze (7 Wkts, ER 8.48)', seasonStats: { runs: 29, avg: 9.6, sr: 87.8, hundreds: 0, fifties: 0, wkts: 7, econ: 8.48 } }
+    ]
+  },
+  {
+    id: 'mi_2020',
+    league: 'IPL',
+    name: 'Mumbai Indians',
+    shortName: 'MI',
+    year: '2020',
+    themeColor: '#004BA0',
+    secondaryColor: '#D1AB3E',
+    textColor: '#FFFFFF',
+    accentColor: '#002B5C',
+    banner: 'The Greatest T20 Squad Ever Assembled',
+    players: [
+      { id: 'mi20_rohit', name: 'Rohit Sharma', role: 'OPENER', country: 'India', isOverseas: false, batRating: 94, bowlRating: 30, fieldRating: 86, overall: 94, rarity: 'LEGEND', specialBadge: 'Hitman & 5-Time Champ (68 in Final)', seasonStats: { runs: 332, avg: 27.66, sr: 127.69, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'mi20_bumrah', name: 'Jasprit Bumrah', role: 'PACER', country: 'India', isOverseas: false, batRating: 30, bowlRating: 99, fieldRating: 85, overall: 99, rarity: 'LEGEND', specialBadge: 'God of Death Overs (27 Wkts, ER 6.73)', seasonStats: { runs: 5, avg: 2.5, sr: 62.5, hundreds: 0, fifties: 0, wkts: 27, econ: 6.73 } },
+      { id: 'mi20_surya', name: 'Suryakumar Yadav', role: 'TOP_ORDER', country: 'India', isOverseas: false, batRating: 95, bowlRating: 30, fieldRating: 92, overall: 95, rarity: 'LEGEND', specialBadge: 'Uncapped Maestro (480 Runs, 145 SR)', seasonStats: { runs: 480, avg: 40.00, sr: 145.01, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'mi20_qdk', name: 'Quinton de Kock', role: 'WK', country: 'South Africa', isOverseas: true, batRating: 93, bowlRating: 20, fieldRating: 95, overall: 93, rarity: 'ICONIC', specialBadge: '503 Runs (SR 140.5)', seasonStats: { runs: 503, avg: 35.92, sr: 140.50, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'mi20_boult', name: 'Trent Boult', role: 'PACER', country: 'New Zealand', isOverseas: true, batRating: 35, bowlRating: 96, fieldRating: 88, overall: 96, rarity: 'LEGEND', specialBadge: 'Powerplay Assassin (25 Wkts, Final MoM)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 25, econ: 7.97 } },
+      { id: 'mi20_pollard', name: 'Kieron Pollard', role: 'FINISHER', country: 'West Indies', isOverseas: true, batRating: 93, bowlRating: 75, fieldRating: 91, overall: 92, rarity: 'ICONIC', specialBadge: 'SR 191.42 (Monster Finish, 53.6 Avg)', seasonStats: { runs: 268, avg: 53.60, sr: 191.42, hundreds: 0, fifties: 1, wkts: 4, econ: 9.00 } },
+      { id: 'mi20_hardik', name: 'Hardik Pandya', role: 'FINISHER', country: 'India', isOverseas: false, batRating: 92, bowlRating: 60, fieldRating: 90, overall: 91, rarity: 'ICONIC', specialBadge: 'SR 178.98 (281 Runs, 25 Sixes)', seasonStats: { runs: 281, avg: 35.12, sr: 178.98, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'mi20_ishan', name: 'Ishan Kishan', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 93, bowlRating: 20, fieldRating: 84, overall: 93, rarity: 'ICONIC', specialBadge: '516 Runs (30 Sixes, 57.3 Avg)', seasonStats: { runs: 516, avg: 57.33, sr: 145.76, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'mi20_krunal', name: 'Krunal Pandya', role: 'SPIN_ALL', country: 'India', isOverseas: false, batRating: 81, bowlRating: 84, fieldRating: 89, overall: 85, rarity: 'DIAMOND', specialBadge: 'Left-Arm Choke (6 Wkts, ER 7.57)', seasonStats: { runs: 109, avg: 18.16, sr: 118.47, hundreds: 0, fifties: 0, wkts: 6, econ: 7.57 } },
+      { id: 'mi20_chahar', name: 'Rahul Chahar', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 25, bowlRating: 90, fieldRating: 84, overall: 89, rarity: 'DIAMOND', specialBadge: 'Leg-Spin Breakthroughs (15 Wkts)', seasonStats: { runs: 2, avg: 2.0, sr: 66.6, hundreds: 0, fifties: 0, wkts: 15, econ: 8.16 } },
+      { id: 'mi20_pattinson', name: 'James Pattinson', role: 'PACER', country: 'Australia', isOverseas: true, batRating: 40, bowlRating: 88, fieldRating: 80, overall: 87, rarity: 'GOLD', specialBadge: 'Thunderbolts (11 Wkts)', seasonStats: { runs: 15, avg: 7.5, sr: 125.0, hundreds: 0, fifties: 0, wkts: 11, econ: 9.02 } }
+    ]
+  },
+  {
+    id: 'kkr_2024',
+    league: 'IPL',
+    name: 'Kolkata Knight Riders',
+    shortName: 'KKR',
+    year: '2024',
+    themeColor: '#3A225D',
+    secondaryColor: '#B3995D',
+    textColor: '#FFFFFF',
+    accentColor: '#5B2C6F',
+    banner: 'Fearless Champions & Narine MVP',
+    players: [
+      { id: 'kkr24_narine', name: 'Sunil Narine', role: 'SPIN_ALL', country: 'West Indies', isOverseas: true, batRating: 94, bowlRating: 96, fieldRating: 82, overall: 98, rarity: 'LEGEND', specialBadge: 'Tournament MVP (488r & 17w, ER 6.69)', seasonStats: { runs: 488, avg: 34.85, sr: 180.74, hundreds: 1, fifties: 3, wkts: 17, econ: 6.69 } },
+      { id: 'kkr24_russell', name: 'Andre Russell', role: 'PACE_ALL', country: 'West Indies', isOverseas: true, batRating: 94, bowlRating: 88, fieldRating: 88, overall: 94, rarity: 'LEGEND', specialBadge: 'Dre Russ (19 Wkts, 185.0 SR)', seasonStats: { runs: 222, avg: 31.71, sr: 185.00, hundreds: 0, fifties: 1, wkts: 19, econ: 10.05 } },
+      { id: 'kkr24_salt', name: 'Phil Salt', role: 'WK', country: 'England', isOverseas: true, batRating: 92, bowlRating: 20, fieldRating: 88, overall: 92, rarity: 'ICONIC', specialBadge: 'SR 182.0 (435 Runs, Powerplay Blitz)', seasonStats: { runs: 435, avg: 39.54, sr: 182.00, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'kkr24_varun', name: 'Varun Chakaravarthy', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 25, bowlRating: 95, fieldRating: 75, overall: 94, rarity: 'ICONIC', specialBadge: 'Mystery Spinner (21 Wkts)', seasonStats: { runs: 2, avg: 2.0, sr: 50.0, hundreds: 0, fifties: 0, wkts: 21, econ: 8.04 } },
+      { id: 'kkr24_starc', name: 'Mitchell Starc', role: 'PACER', country: 'Australia', isOverseas: true, batRating: 60, bowlRating: 93, fieldRating: 85, overall: 92, rarity: 'DIAMOND', specialBadge: 'Final & Q1 MoM (Swinging Yorker)', seasonStats: { runs: 26, avg: 13.0, sr: 108.3, hundreds: 0, fifties: 0, wkts: 17, econ: 10.61 } },
+      { id: 'kkr24_harshit', name: 'Harshit Rana', role: 'PACER', country: 'India', isOverseas: false, batRating: 40, bowlRating: 89, fieldRating: 82, overall: 89, rarity: 'DIAMOND', specialBadge: '19 Wickets (Slower Ball Sensation)', seasonStats: { runs: 15, avg: 7.5, sr: 100.0, hundreds: 0, fifties: 0, wkts: 19, econ: 9.08 } },
+      { id: 'kkr24_rinku', name: 'Rinku Singh', role: 'FINISHER', country: 'India', isOverseas: false, batRating: 91, bowlRating: 30, fieldRating: 94, overall: 91, rarity: 'DIAMOND', specialBadge: 'Clutch God', seasonStats: { runs: 168, avg: 18.66, sr: 148.67, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'kkr24_shreyas', name: 'Shreyas Iyer', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 89, bowlRating: 25, fieldRating: 87, overall: 89, rarity: 'DIAMOND', specialBadge: 'Winning Captain (351 Runs)', seasonStats: { runs: 351, avg: 39.00, sr: 146.86, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'kkr24_venkatesh', name: 'Venkatesh Iyer', role: 'TOP_ORDER', country: 'India', isOverseas: false, batRating: 91, bowlRating: 70, fieldRating: 86, overall: 91, rarity: 'ICONIC', specialBadge: 'Final Half-Centurion (370 Runs, 158 SR)', seasonStats: { runs: 370, avg: 46.25, sr: 158.79, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'kkr24_ramandeep', name: 'Ramandeep Singh', role: 'FINISHER', country: 'India', isOverseas: false, batRating: 85, bowlRating: 75, fieldRating: 92, overall: 85, rarity: 'GOLD', specialBadge: 'SR 201.61 (Death Hitter)', seasonStats: { runs: 125, avg: 31.25, sr: 201.61, hundreds: 0, fifties: 0, wkts: 1, econ: 10.0 } },
+      { id: 'kkr24_vaibhav', name: 'Vaibhav Arora', role: 'PACER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 86, fieldRating: 80, overall: 86, rarity: 'GOLD', specialBadge: 'Inswing Bowler (11 Wkts)', seasonStats: { runs: 1, avg: 1.0, sr: 33.3, hundreds: 0, fifties: 0, wkts: 11, econ: 8.78 } }
+    ]
+  },
+  {
+    id: 'srh_2024',
+    league: 'IPL',
+    name: 'Sunrisers Hyderabad',
+    shortName: 'SRH',
+    year: '2024',
+    themeColor: '#FF6F00',
+    secondaryColor: '#000000',
+    textColor: '#FFFFFF',
+    accentColor: '#D84315',
+    banner: '250+ All-Time Record Smashers',
+    players: [
+      { id: 'srh24_head', name: 'Travis Head', role: 'OPENER', country: 'Australia', isOverseas: true, batRating: 98, bowlRating: 50, fieldRating: 89, overall: 97, rarity: 'LEGEND', specialBadge: 'SR 191.5 (567 Runs, Century in 39b)', seasonStats: { runs: 567, avg: 40.50, sr: 191.55, hundreds: 1, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'srh24_abhishek', name: 'Abhishek Sharma', role: 'OPENER', country: 'India', isOverseas: false, batRating: 95, bowlRating: 70, fieldRating: 86, overall: 94, rarity: 'ICONIC', specialBadge: 'SR 204.2 (42 Sixes, 484 Runs)', seasonStats: { runs: 484, avg: 32.26, sr: 204.21, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'srh24_klaasen', name: 'Heinrich Klaasen', role: 'WK', country: 'South Africa', isOverseas: true, batRating: 97, bowlRating: 20, fieldRating: 90, overall: 97, rarity: 'LEGEND', specialBadge: 'Spin Destroyer (479 Runs, 171 SR)', seasonStats: { runs: 479, avg: 39.91, sr: 171.07, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'srh24_cummins', name: 'Pat Cummins', role: 'PACE_ALL', country: 'Australia', isOverseas: true, batRating: 80, bowlRating: 93, fieldRating: 88, overall: 93, rarity: 'ICONIC', specialBadge: 'Captain Silencer (18 Wkts)', seasonStats: { runs: 136, avg: 15.11, sr: 144.68, hundreds: 0, fifties: 0, wkts: 18, econ: 9.27 } },
+      { id: 'srh24_natarajan', name: 'T Natarajan', role: 'PACER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 93, fieldRating: 80, overall: 92, rarity: 'DIAMOND', specialBadge: 'Yorker Machine (19 Wkts)', seasonStats: { runs: 1, avg: 1.0, sr: 33.3, hundreds: 0, fifties: 0, wkts: 19, econ: 9.05 } },
+      { id: 'srh24_nitish', name: 'Nitish Kumar Reddy', role: 'PACE_ALL', country: 'India', isOverseas: false, batRating: 88, bowlRating: 80, fieldRating: 88, overall: 88, rarity: 'DIAMOND', specialBadge: 'Emerging Player (303 Runs)', seasonStats: { runs: 303, avg: 33.66, sr: 142.92, hundreds: 0, fifties: 2, wkts: 3, econ: 9.61 } },
+      { id: 'srh24_bhuvi', name: 'Bhuvneshwar Kumar', role: 'PACER', country: 'India', isOverseas: false, batRating: 40, bowlRating: 87, fieldRating: 84, overall: 87, rarity: 'GOLD', specialBadge: 'Swing Veteran (11 Wkts)', seasonStats: { runs: 19, avg: 6.3, sr: 86.3, hundreds: 0, fifties: 0, wkts: 11, econ: 9.35 } },
+      { id: 'srh24_shahbaz', name: 'Shahbaz Ahmed', role: 'SPIN_ALL', country: 'India', isOverseas: false, batRating: 78, bowlRating: 83, fieldRating: 83, overall: 82, rarity: 'GOLD', specialBadge: 'Qualifier 2 MoM', seasonStats: { runs: 207, avg: 25.87, sr: 137.08, hundreds: 0, fifties: 1, wkts: 6, econ: 9.54 } },
+      { id: 'srh24_tripathi', name: 'Rahul Tripathi', role: 'TOP_ORDER', country: 'India', isOverseas: false, batRating: 86, bowlRating: 20, fieldRating: 88, overall: 86, rarity: 'GOLD', specialBadge: 'Aggressive No. 3', seasonStats: { runs: 161, avg: 26.83, sr: 153.33, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'srh24_samad', name: 'Abdul Samad', role: 'FINISHER', country: 'India', isOverseas: false, batRating: 84, bowlRating: 65, fieldRating: 84, overall: 83, rarity: 'GOLD', specialBadge: 'Big Six Finisher', seasonStats: { runs: 182, avg: 18.20, sr: 168.51, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'srh24_markande', name: 'Mayank Markande', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 83, fieldRating: 78, overall: 82, rarity: 'GOLD', specialBadge: 'Wrist Spin', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 8, econ: 11.48 } }
+    ]
+  },
+  {
+    id: 'gt_2022',
+    league: 'IPL',
+    name: 'Gujarat Titans',
+    shortName: 'GT',
+    year: '2022',
+    themeColor: '#1B2133',
+    secondaryColor: '#C4A456',
+    textColor: '#FFFFFF',
+    accentColor: '#0B4973',
+    banner: 'Debut Season Fairytale Champions',
+    players: [
+      { id: 'gt22_hardik', name: 'Hardik Pandya', role: 'PACE_ALL', country: 'India', isOverseas: false, batRating: 95, bowlRating: 88, fieldRating: 93, overall: 96, rarity: 'LEGEND', specialBadge: 'Final MoM (487r & 8w)', seasonStats: { runs: 487, avg: 44.27, sr: 131.26, hundreds: 0, fifties: 4, wkts: 8, econ: 7.27 } },
+      { id: 'gt22_rashid', name: 'Rashid Khan', role: 'SPIN_ALL', country: 'Afghanistan', isOverseas: true, batRating: 85, bowlRating: 98, fieldRating: 92, overall: 97, rarity: 'LEGEND', specialBadge: 'Kamaal Khan (19w, ER 6.59)', seasonStats: { runs: 91, avg: 13.0, sr: 206.81, hundreds: 0, fifties: 0, wkts: 19, econ: 6.59 } },
+      { id: 'gt22_shubman', name: 'Shubman Gill', role: 'OPENER', country: 'India', isOverseas: false, batRating: 92, bowlRating: 20, fieldRating: 87, overall: 92, rarity: 'DIAMOND', specialBadge: 'Final Winning Six (483 Runs)', seasonStats: { runs: 483, avg: 34.50, sr: 132.32, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'gt22_miller', name: 'David Miller', role: 'FINISHER', country: 'South Africa', isOverseas: true, batRating: 93, bowlRating: 20, fieldRating: 89, overall: 93, rarity: 'ICONIC', specialBadge: 'Killer Miller (481r, 68.7 Avg)', seasonStats: { runs: 481, avg: 68.71, sr: 142.72, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'gt22_shami', name: 'Mohammed Shami', role: 'PACER', country: 'India', isOverseas: false, batRating: 25, bowlRating: 95, fieldRating: 80, overall: 94, rarity: 'ICONIC', specialBadge: 'Powerplay Seam (20 Wkts)', seasonStats: { runs: 11, avg: 3.6, sr: 84.6, hundreds: 0, fifties: 0, wkts: 20, econ: 8.00 } },
+      { id: 'gt22_tewatia', name: 'Rahul Tewatia', role: 'FINISHER', country: 'India', isOverseas: false, batRating: 89, bowlRating: 72, fieldRating: 82, overall: 87, rarity: 'DIAMOND', specialBadge: 'Last-Over Iceman', seasonStats: { runs: 217, avg: 31.00, sr: 147.61, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'gt22_lockie', name: 'Lockie Ferguson', role: 'PACER', country: 'New Zealand', isOverseas: true, batRating: 25, bowlRating: 89, fieldRating: 84, overall: 88, rarity: 'DIAMOND', specialBadge: '157.3 km/h Thunderbolt', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 12, econ: 8.95 } },
+      { id: 'gt22_saha', name: 'Wriddhiman Saha', role: 'WK', country: 'India', isOverseas: false, batRating: 84, bowlRating: 20, fieldRating: 94, overall: 85, rarity: 'GOLD', specialBadge: 'Powerplay Strikeline', seasonStats: { runs: 317, avg: 31.70, sr: 122.39, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'gt22_kishore', name: 'R Sai Kishore', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 30, bowlRating: 86, fieldRating: 80, overall: 85, rarity: 'GOLD', specialBadge: 'Left-Arm Tight Lines (6 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 6, econ: 7.56 } },
+      { id: 'gt22_dayal', name: 'Yash Dayal', role: 'PACER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 85, fieldRating: 78, overall: 84, rarity: 'GOLD', specialBadge: 'Left-Arm Pace (11 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 11, econ: 9.25 } },
+      { id: 'gt22_manohar', name: 'Abhinav Manohar', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 82, bowlRating: 20, fieldRating: 84, overall: 82, rarity: 'GOLD', specialBadge: 'Clean Striker', seasonStats: { runs: 108, avg: 15.42, sr: 144.00, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } }
+    ]
+  },
+
+  // ================= BBL (BIG BASH LEAGUE) =================
+  {
+    id: 'perth_2022',
+    league: 'BBL',
+    name: 'Perth Scorchers',
+    shortName: 'SCO',
+    year: '2022',
+    themeColor: '#FF6600',
+    secondaryColor: '#000000',
+    textColor: '#FFFFFF',
+    accentColor: '#D35400',
+    banner: 'The BBL Dynasty (Champions)',
+    players: [
+      { id: 'sco22_marsh', name: 'Mitchell Marsh', role: 'PACE_ALL', country: 'Australia', isOverseas: false, batRating: 95, bowlRating: 86, fieldRating: 90, overall: 95, rarity: 'LEGEND', specialBadge: 'BBL Final Hero (347r, 58 Avg)', seasonStats: { runs: 347, avg: 57.83, sr: 142.21, hundreds: 1, fifties: 2, wkts: 5, econ: 8.50 } },
+      { id: 'sco22_turner', name: 'Ashton Turner', role: 'FINISHER', country: 'Australia', isOverseas: false, batRating: 91, bowlRating: 60, fieldRating: 92, overall: 90, rarity: 'ICONIC', specialBadge: 'Clutch Captain (357 Runs)', seasonStats: { runs: 357, avg: 35.70, sr: 153.87, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'sco22_richardson', name: 'Jhye Richardson', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 50, bowlRating: 94, fieldRating: 88, overall: 93, rarity: 'ICONIC', specialBadge: 'Optus Stadium Express (15 Wkts)', seasonStats: { runs: 18, avg: 9.0, sr: 112.5, hundreds: 0, fifties: 0, wkts: 15, econ: 6.75 } },
+      { id: 'sco22_tye', name: 'Andrew Tye', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 40, bowlRating: 93, fieldRating: 82, overall: 92, rarity: 'DIAMOND', specialBadge: 'Knuckleball Master (25 Wkts)', seasonStats: { runs: 53, avg: 13.2, sr: 132.5, hundreds: 0, fifties: 0, wkts: 25, econ: 8.08 } },
+      { id: 'sco22_agar', name: 'Ashton Agar', role: 'SPIN_ALL', country: 'Australia', isOverseas: false, batRating: 78, bowlRating: 90, fieldRating: 96, overall: 89, rarity: 'DIAMOND', specialBadge: 'ER 6.78 Spin Choke', seasonStats: { runs: 133, avg: 19.0, sr: 138.5, hundreds: 0, fifties: 0, wkts: 18, econ: 6.78 } },
+      { id: 'sco22_inglis', name: 'Josh Inglis', role: 'WK', country: 'Australia', isOverseas: false, batRating: 89, bowlRating: 20, fieldRating: 94, overall: 89, rarity: 'DIAMOND', specialBadge: '360 Sweep Specialist', seasonStats: { runs: 313, avg: 28.45, sr: 137.28, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'sco22_munro', name: 'Colin Munro', role: 'OPENER', country: 'New Zealand', isOverseas: true, batRating: 92, bowlRating: 40, fieldRating: 84, overall: 91, rarity: 'ICONIC', specialBadge: '390 Runs (127 SR)', seasonStats: { runs: 390, avg: 43.33, sr: 127.45, hundreds: 1, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'sco22_behrendorff', name: 'Jason Behrendorff', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 25, bowlRating: 91, fieldRating: 80, overall: 90, rarity: 'GOLD', specialBadge: 'New Ball Inswing (16 Wkts)', seasonStats: { runs: 2, avg: 2.0, sr: 66.6, hundreds: 0, fifties: 0, wkts: 16, econ: 7.02 } },
+      { id: 'sco22_evans', name: 'Laurie Evans', role: 'MIDDLE_ORDER', country: 'England', isOverseas: true, batRating: 90, bowlRating: 20, fieldRating: 88, overall: 90, rarity: 'DIAMOND', specialBadge: 'Final MoM (76* off 41)', seasonStats: { runs: 361, avg: 40.11, sr: 144.40, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'sco22_patterson', name: 'Kurtis Patterson', role: 'OPENER', country: 'Australia', isOverseas: false, batRating: 87, bowlRating: 20, fieldRating: 82, overall: 86, rarity: 'GOLD', specialBadge: '391 Runs (4 50s)', seasonStats: { runs: 391, avg: 30.07, sr: 141.66, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'sco22_hatzoglou', name: 'Peter Hatzoglou', role: 'SPINNER', country: 'Australia', isOverseas: false, batRating: 15, bowlRating: 87, fieldRating: 75, overall: 85, rarity: 'GOLD', specialBadge: 'Mystery Leg Spin (15 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 15, econ: 7.46 } }
+    ]
+  },
+  {
+    id: 'sydney_2020',
+    league: 'BBL',
+    name: 'Sydney Sixers',
+    shortName: 'SIX',
+    year: '2020',
+    themeColor: '#E6007E',
+    secondaryColor: '#002B49',
+    textColor: '#FFFFFF',
+    accentColor: '#FF69B4',
+    banner: 'BBL09 Magenta Kings',
+    players: [
+      { id: 'six20_smith', name: 'Steve Smith', role: 'TOP_ORDER', country: 'Australia', isOverseas: false, batRating: 96, bowlRating: 60, fieldRating: 96, overall: 96, rarity: 'LEGEND', specialBadge: 'Class Anchor (59.0 Avg)', seasonStats: { runs: 236, avg: 59.00, sr: 134.85, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'six20_philippe', name: 'Josh Philippe', role: 'WK', country: 'Australia', isOverseas: false, batRating: 93, bowlRating: 20, fieldRating: 92, overall: 93, rarity: 'ICONIC', specialBadge: 'Final MoM (52 off 29 & 487 Runs)', seasonStats: { runs: 487, avg: 37.46, sr: 130.21, hundreds: 0, fifties: 5, wkts: 0, econ: 0 } },
+      { id: 'six20_abbott', name: 'Sean Abbott', role: 'PACE_ALL', country: 'Australia', isOverseas: false, batRating: 75, bowlRating: 94, fieldRating: 88, overall: 92, rarity: 'ICONIC', specialBadge: 'BBL All-Time Wicket King (14w in 7m)', seasonStats: { runs: 41, avg: 13.6, sr: 124.2, hundreds: 0, fifties: 0, wkts: 14, econ: 8.16 } },
+      { id: 'six20_curran', name: 'Tom Curran', role: 'PACE_ALL', country: 'England', isOverseas: true, batRating: 84, bowlRating: 91, fieldRating: 90, overall: 90, rarity: 'DIAMOND', specialBadge: '16 Wkts & 133 Runs', seasonStats: { runs: 133, avg: 19.0, sr: 149.4, hundreds: 0, fifties: 0, wkts: 16, econ: 9.05 } },
+      { id: 'six20_henriques', name: 'Moises Henriques', role: 'MIDDLE_ORDER', country: 'Australia', isOverseas: false, batRating: 88, bowlRating: 76, fieldRating: 88, overall: 88, rarity: 'DIAMOND', specialBadge: 'Title-Winning Captain (267 Runs)', seasonStats: { runs: 267, avg: 26.70, sr: 150.00, hundreds: 0, fifties: 2, wkts: 2, econ: 8.14 } },
+      { id: 'six20_dwarshuis', name: 'Ben Dwarshuis', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 45, bowlRating: 90, fieldRating: 84, overall: 89, rarity: 'GOLD', specialBadge: 'Left-Arm Death Specialist (16 Wkts)', seasonStats: { runs: 30, avg: 10.0, sr: 136.3, hundreds: 0, fifties: 0, wkts: 16, econ: 8.01 } },
+      { id: 'six20_okefe', name: 'Steve OKeefe', role: 'SPINNER', country: 'Australia', isOverseas: false, batRating: 40, bowlRating: 90, fieldRating: 80, overall: 88, rarity: 'GOLD', specialBadge: 'ER 6.84 Accuracy', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 10, econ: 6.84 } },
+      { id: 'six20_vince', name: 'James Vince', role: 'OPENER', country: 'England', isOverseas: true, batRating: 89, bowlRating: 20, fieldRating: 88, overall: 89, rarity: 'DIAMOND', specialBadge: 'Cover Drive Perfection (309 Runs)', seasonStats: { runs: 309, avg: 28.09, sr: 129.83, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'six20_silk', name: 'Jordan Silk', role: 'FINISHER', country: 'Australia', isOverseas: false, batRating: 86, bowlRating: 20, fieldRating: 99, overall: 87, rarity: 'GOLD', specialBadge: 'Gun Fielder (181 Runs)', seasonStats: { runs: 181, avg: 25.85, sr: 122.29, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'six20_hughes', name: 'Daniel Hughes', role: 'OPENER', country: 'Australia', isOverseas: false, batRating: 87, bowlRating: 20, fieldRating: 84, overall: 86, rarity: 'GOLD', specialBadge: '286 Runs', seasonStats: { runs: 286, avg: 23.83, sr: 128.25, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'six20_bird', name: 'Jackson Bird', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 20, bowlRating: 87, fieldRating: 80, overall: 86, rarity: 'GOLD', specialBadge: 'Seam Presentation (11 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 11, econ: 7.21 } }
+    ]
+  },
+
+  // ================= PSL (PAKISTAN SUPER LEAGUE) =================
+  {
+    id: 'lahore_2022',
+    league: 'PSL',
+    name: 'Lahore Qalandars',
+    shortName: 'LQ',
+    year: '2022',
+    themeColor: '#00A859',
+    secondaryColor: '#ED1C24',
+    textColor: '#FFFFFF',
+    accentColor: '#2ECC71',
+    banner: 'The Pace Fortress (Shaheen & Rauf)',
+    players: [
+      { id: 'lq22_shaheen', name: 'Shaheen Shah Afridi', role: 'PACER', country: 'Pakistan', isOverseas: false, batRating: 60, bowlRating: 99, fieldRating: 86, overall: 98, rarity: 'LEGEND', specialBadge: 'Captain & Leading Wkts (20 Wkts, ER 7.57)', seasonStats: { runs: 58, avg: 14.5, sr: 181.25, hundreds: 0, fifties: 0, wkts: 20, econ: 7.57 } },
+      { id: 'lq22_fakhar', name: 'Fakhar Zaman', role: 'OPENER', country: 'Pakistan', isOverseas: false, batRating: 96, bowlRating: 30, fieldRating: 88, overall: 96, rarity: 'LEGEND', specialBadge: 'Tournament Top Scorer (588 Runs, 153 SR)', seasonStats: { runs: 588, avg: 45.23, sr: 152.72, hundreds: 1, fifties: 7, wkts: 0, econ: 0 } },
+      { id: 'lq22_rashid', name: 'Rashid Khan', role: 'SPIN_ALL', country: 'Afghanistan', isOverseas: true, batRating: 80, bowlRating: 98, fieldRating: 92, overall: 97, rarity: 'LEGEND', specialBadge: '13 Wkts in 9 Matches (ER 6.25)', seasonStats: { runs: 55, avg: 18.3, sr: 189.65, hundreds: 0, fifties: 0, wkts: 13, econ: 6.25 } },
+      { id: 'lq22_rauf', name: 'Haris Rauf', role: 'PACER', country: 'Pakistan', isOverseas: false, batRating: 25, bowlRating: 95, fieldRating: 85, overall: 94, rarity: 'ICONIC', specialBadge: '150+ km/h Express (16 Wkts)', seasonStats: { runs: 12, avg: 4.0, sr: 100.0, hundreds: 0, fifties: 0, wkts: 16, econ: 8.54 } },
+      { id: 'lq22_wiese', name: 'David Wiese', role: 'PACE_ALL', country: 'Namibia', isOverseas: true, batRating: 90, bowlRating: 87, fieldRating: 88, overall: 90, rarity: 'DIAMOND', specialBadge: 'Death Over Clutch (168 Runs, 9 Wkts)', seasonStats: { runs: 168, avg: 42.0, sr: 186.66, hundreds: 0, fifties: 0, wkts: 9, econ: 8.48 } },
+      { id: 'lq22_brook', name: 'Harry Brook', role: 'MIDDLE_ORDER', country: 'England', isOverseas: true, batRating: 94, bowlRating: 20, fieldRating: 90, overall: 93, rarity: 'ICONIC', specialBadge: 'Century off 48 Balls (264 Runs)', seasonStats: { runs: 264, avg: 52.80, sr: 171.42, hundreds: 1, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'lq22_hafeez', name: 'Mohammad Hafeez', role: 'SPIN_ALL', country: 'Pakistan', isOverseas: false, batRating: 88, bowlRating: 85, fieldRating: 88, overall: 89, rarity: 'DIAMOND', specialBadge: 'Professor (Final MoM 69 & 2/23)', seasonStats: { runs: 323, avg: 29.36, sr: 127.16, hundreds: 0, fifties: 1, wkts: 6, econ: 6.45 } },
+      { id: 'lq22_zaman', name: 'Zaman Khan', role: 'PACER', country: 'Pakistan', isOverseas: false, batRating: 15, bowlRating: 92, fieldRating: 80, overall: 90, rarity: 'GOLD', specialBadge: 'Sling Yorker Sensation (18 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 18, econ: 8.26 } },
+      { id: 'lq22_shafique', name: 'Abdullah Shafique', role: 'OPENER', country: 'Pakistan', isOverseas: false, batRating: 88, bowlRating: 20, fieldRating: 86, overall: 88, rarity: 'GOLD', specialBadge: 'Final 52 (252 Runs)', seasonStats: { runs: 252, avg: 28.00, sr: 128.57, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'lq22_salt', name: 'Phil Salt', role: 'WK', country: 'England', isOverseas: true, batRating: 89, bowlRating: 20, fieldRating: 88, overall: 89, rarity: 'DIAMOND', specialBadge: 'Aggressive Gloveman', seasonStats: { runs: 180, avg: 30.00, sr: 153.84, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'lq22_samit', name: 'Samit Patel', role: 'SPIN_ALL', country: 'England', isOverseas: true, batRating: 82, bowlRating: 84, fieldRating: 82, overall: 83, rarity: 'GOLD', specialBadge: 'Economy Left-Arm', seasonStats: { runs: 45, avg: 15.0, sr: 112.5, hundreds: 0, fifties: 0, wkts: 5, econ: 7.85 } }
+    ]
+  },
+  {
+    id: 'islu_2024',
+    league: 'PSL',
+    name: 'Islamabad United',
+    shortName: 'ISL',
+    year: '2024',
+    themeColor: '#E61E26',
+    secondaryColor: '#FF6B00',
+    textColor: '#FFFFFF',
+    accentColor: '#FFD700',
+    banner: '3-Time PSL Champions & All-Round Balance',
+    players: [
+      { id: 'isl24_shadab', name: 'Shadab Khan', role: 'SPIN_ALL', country: 'Pakistan', isOverseas: false, batRating: 94, bowlRating: 93, fieldRating: 95, overall: 96, rarity: 'LEGEND', specialBadge: 'Player of Tournament (305r & 14w)', seasonStats: { runs: 305, avg: 30.50, sr: 142.52, hundreds: 0, fifties: 3, wkts: 14, econ: 8.52 } },
+      { id: 'isl24_imad', name: 'Imad Wasim', role: 'SPIN_ALL', country: 'Pakistan', isOverseas: false, batRating: 89, bowlRating: 95, fieldRating: 88, overall: 95, rarity: 'LEGEND', specialBadge: 'Final MoM (5/23 & 19* in Final)', seasonStats: { runs: 126, avg: 25.20, sr: 128.57, hundreds: 0, fifties: 0, wkts: 12, econ: 6.84 } },
+      { id: 'isl24_naseem', name: 'Naseem Shah', role: 'PACER', country: 'Pakistan', isOverseas: false, batRating: 45, bowlRating: 95, fieldRating: 86, overall: 94, rarity: 'ICONIC', specialBadge: '15 Wickets & Winning Runs', seasonStats: { runs: 38, avg: 12.6, sr: 140.0, hundreds: 0, fifties: 0, wkts: 15, econ: 7.56 } },
+      { id: 'isl24_munro', name: 'Colin Munro', role: 'OPENER', country: 'New Zealand', isOverseas: true, batRating: 92, bowlRating: 30, fieldRating: 86, overall: 91, rarity: 'ICONIC', specialBadge: '326 Runs (SR 141.7)', seasonStats: { runs: 326, avg: 32.60, sr: 141.73, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'isl24_azam', name: 'Azam Khan', role: 'WK', country: 'Pakistan', isOverseas: false, batRating: 91, bowlRating: 10, fieldRating: 82, overall: 90, rarity: 'DIAMOND', specialBadge: 'SR 171.4 (226 Runs, Heavy Hitter)', seasonStats: { runs: 226, avg: 25.11, sr: 171.21, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'isl24_salman', name: 'Agha Salman', role: 'MIDDLE_ORDER', country: 'Pakistan', isOverseas: false, batRating: 89, bowlRating: 75, fieldRating: 88, overall: 89, rarity: 'DIAMOND', specialBadge: '310 Runs (140.2 SR)', seasonStats: { runs: 310, avg: 31.00, sr: 140.27, hundreds: 0, fifties: 2, wkts: 2, econ: 8.12 } },
+      { id: 'isl24_hales', name: 'Alex Hales', role: 'OPENER', country: 'England', isOverseas: true, batRating: 88, bowlRating: 20, fieldRating: 84, overall: 88, rarity: 'GOLD', specialBadge: 'Powerplay Striker', seasonStats: { runs: 148, avg: 18.50, sr: 138.31, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'isl24_faheem', name: 'Faheem Ashraf', role: 'PACE_ALL', country: 'Pakistan', isOverseas: false, batRating: 82, bowlRating: 88, fieldRating: 86, overall: 86, rarity: 'GOLD', specialBadge: 'Death Over Support (6 Wkts)', seasonStats: { runs: 96, avg: 19.2, sr: 139.13, hundreds: 0, fifties: 0, wkts: 6, econ: 8.86 } },
+      { id: 'isl24_hunain', name: 'Hunain Shah', role: 'PACER', country: 'Pakistan', isOverseas: false, batRating: 20, bowlRating: 88, fieldRating: 82, overall: 86, rarity: 'GOLD', specialBadge: 'Final Last Ball Winning Boundary & 8 Wkts', seasonStats: { runs: 4, avg: 4.0, sr: 400.0, hundreds: 0, fifties: 0, wkts: 8, econ: 7.91 } },
+      { id: 'isl24_mills', name: 'Tymal Mills', role: 'PACER', country: 'England', isOverseas: true, batRating: 20, bowlRating: 89, fieldRating: 80, overall: 87, rarity: 'GOLD', specialBadge: 'Left-Arm Slower Ball (8 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 8, econ: 9.15 } },
+      { id: 'isl24_guptill', name: 'Martin Guptill', role: 'TOP_ORDER', country: 'New Zealand', isOverseas: true, batRating: 89, bowlRating: 20, fieldRating: 92, overall: 88, rarity: 'DIAMOND', specialBadge: 'Final Half-Century (50 off 32)', seasonStats: { runs: 145, avg: 29.00, sr: 147.95, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } }
+    ]
+  },
+
+  // ================= SA20 (SOUTH AFRICA) =================
+  {
+    id: 'sec_2024',
+    league: 'SA20',
+    name: 'Sunrisers Eastern Cape',
+    shortName: 'SEC',
+    year: '2024',
+    themeColor: '#FF5722',
+    secondaryColor: '#000000',
+    textColor: '#FFFFFF',
+    accentColor: '#E64A19',
+    banner: 'Back-to-Back SA20 Champions',
+    players: [
+      { id: 'sec24_markram', name: 'Aiden Markram', role: 'TOP_ORDER', country: 'South Africa', isOverseas: false, batRating: 95, bowlRating: 80, fieldRating: 95, overall: 95, rarity: 'LEGEND', specialBadge: '2-Time Winning Captain (261r & 4w)', seasonStats: { runs: 261, avg: 29.00, sr: 135.23, hundreds: 0, fifties: 2, wkts: 4, econ: 7.20 } },
+      { id: 'sec24_jansen', name: 'Marco Jansen', role: 'PACE_ALL', country: 'South Africa', isOverseas: false, batRating: 88, bowlRating: 96, fieldRating: 92, overall: 96, rarity: 'LEGEND', specialBadge: 'Player of Tournament & Purple Cap (20w, 5/30 in Final)', seasonStats: { runs: 111, avg: 37.0, sr: 168.18, hundreds: 0, fifties: 1, wkts: 20, econ: 7.66 } },
+      { id: 'sec24_stubbs', name: 'Tristan Stubbs', role: 'FINISHER', country: 'South Africa', isOverseas: false, batRating: 94, bowlRating: 65, fieldRating: 94, overall: 94, rarity: 'ICONIC', specialBadge: '301 Runs (60.2 Avg, 168.1 SR)', seasonStats: { runs: 301, avg: 60.20, sr: 168.15, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'sec24_baartman', name: 'Ottniel Baartman', role: 'PACER', country: 'South Africa', isOverseas: false, batRating: 20, bowlRating: 95, fieldRating: 80, overall: 94, rarity: 'ICONIC', specialBadge: '18 Wickets (ER 6.95, Hat-Trick)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 18, econ: 6.95 } },
+      { id: 'sec24_malan', name: 'Dawid Malan', role: 'OPENER', country: 'England', isOverseas: true, batRating: 91, bowlRating: 20, fieldRating: 84, overall: 90, rarity: 'DIAMOND', specialBadge: 'T20 Anchor (218 Runs)', seasonStats: { runs: 218, avg: 31.14, sr: 132.92, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'sec24_harmer', name: 'Simon Harmer', role: 'SPINNER', country: 'South Africa', isOverseas: false, batRating: 55, bowlRating: 89, fieldRating: 84, overall: 88, rarity: 'GOLD', specialBadge: 'Off-Spin Squeeze (8 Wkts)', seasonStats: { runs: 15, avg: 7.5, sr: 100.0, hundreds: 0, fifties: 0, wkts: 8, econ: 7.42 } },
+      { id: 'sec24_abell', name: 'Tom Abell', role: 'MIDDLE_ORDER', country: 'England', isOverseas: true, batRating: 89, bowlRating: 20, fieldRating: 92, overall: 89, rarity: 'DIAMOND', specialBadge: 'Final MoM (55 off 34)', seasonStats: { runs: 286, avg: 47.66, sr: 152.94, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'sec24_worrall', name: 'Daniel Worrall', role: 'PACER', country: 'Australia', isOverseas: true, batRating: 30, bowlRating: 92, fieldRating: 82, overall: 91, rarity: 'DIAMOND', specialBadge: 'Powerplay Swing (17 Wkts, ER 6.84)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 17, econ: 6.84 } },
+      { id: 'sec24_hermann', name: 'Jordan Hermann', role: 'OPENER', country: 'South Africa', isOverseas: false, batRating: 87, bowlRating: 20, fieldRating: 86, overall: 87, rarity: 'GOLD', specialBadge: 'Century Maker (106* off 62)', seasonStats: { runs: 295, avg: 32.77, sr: 122.91, hundreds: 1, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'sec24_kruger', name: 'Patrick Kruger', role: 'PACE_ALL', country: 'South Africa', isOverseas: false, batRating: 84, bowlRating: 84, fieldRating: 88, overall: 85, rarity: 'GOLD', specialBadge: 'Clutch All-Rounder (10 Wkts)', seasonStats: { runs: 109, avg: 36.33, sr: 155.71, hundreds: 0, fifties: 0, wkts: 10, econ: 8.82 } },
+      { id: 'sec24_rossington', name: 'Adam Rossington', role: 'WK', country: 'England', isOverseas: true, batRating: 86, bowlRating: 20, fieldRating: 90, overall: 86, rarity: 'GOLD', specialBadge: 'Gloveman & Opener', seasonStats: { runs: 145, avg: 20.71, sr: 148.00, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } }
+    ]
+  },
+
+  // ================= CPL (CARIBBEAN PREMIER LEAGUE) =================
+  {
+    id: 'tkr_2020',
+    league: 'CPL',
+    name: 'Trinbago Knight Riders',
+    shortName: 'TKR',
+    year: '2020',
+    themeColor: '#C4122F',
+    secondaryColor: '#000000',
+    textColor: '#FFFFFF',
+    accentColor: '#FFD700',
+    banner: 'Undefeated 12-0 Perfect CPL Champions',
+    players: [
+      { id: 'tkr20_pollard', name: 'Kieron Pollard', role: 'FINISHER', country: 'West Indies', isOverseas: false, batRating: 97, bowlRating: 85, fieldRating: 92, overall: 97, rarity: 'LEGEND', specialBadge: 'Captain & Player of Tournament (207r, 204.9 SR, 8w)', seasonStats: { runs: 207, avg: 51.75, sr: 204.95, hundreds: 0, fifties: 2, wkts: 8, econ: 7.55 } },
+      { id: 'tkr20_simmons', name: 'Lendl Simmons', role: 'OPENER', country: 'West Indies', isOverseas: false, batRating: 94, bowlRating: 20, fieldRating: 86, overall: 94, rarity: 'ICONIC', specialBadge: 'Final MoM (84* in Final & 356 Runs)', seasonStats: { runs: 356, avg: 39.55, sr: 122.33, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'tkr20_narine', name: 'Sunil Narine', role: 'SPIN_ALL', country: 'West Indies', isOverseas: false, batRating: 88, bowlRating: 97, fieldRating: 84, overall: 96, rarity: 'LEGEND', specialBadge: 'ER 4.55 (144 Runs & 6 Wkts)', seasonStats: { runs: 144, avg: 28.80, sr: 148.45, hundreds: 0, fifties: 2, wkts: 6, econ: 4.55 } },
+      { id: 'tkr20_bravo', name: 'Dwayne Bravo', role: 'PACE_ALL', country: 'West Indies', isOverseas: false, batRating: 85, bowlRating: 92, fieldRating: 92, overall: 90, rarity: 'ICONIC', specialBadge: '500 T20 Wickets Icon (9 Wkts)', seasonStats: { runs: 103, avg: 25.75, sr: 141.09, hundreds: 0, fifties: 0, wkts: 9, econ: 8.16 } },
+      { id: 'tkr20_munro', name: 'Colin Munro', role: 'TOP_ORDER', country: 'New Zealand', isOverseas: true, batRating: 91, bowlRating: 20, fieldRating: 86, overall: 90, rarity: 'DIAMOND', specialBadge: '207 Runs (SR 133.5)', seasonStats: { runs: 207, avg: 34.50, sr: 133.54, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'tkr20_hosein', name: 'Akeal Hosein', role: 'SPIN_ALL', country: 'West Indies', isOverseas: false, batRating: 78, bowlRating: 93, fieldRating: 90, overall: 89, rarity: 'DIAMOND', specialBadge: 'ER 5.55 Left-Arm Powerplay (10 Wkts)', seasonStats: { runs: 20, avg: 10.0, sr: 111.1, hundreds: 0, fifties: 0, wkts: 10, econ: 5.55 } },
+      { id: 'tkr20_fawad', name: 'Fawad Ahmed', role: 'SPINNER', country: 'Australia', isOverseas: true, batRating: 15, bowlRating: 92, fieldRating: 78, overall: 90, rarity: 'DIAMOND', specialBadge: '13 Wickets (ER 6.55)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 13, econ: 6.55 } },
+      { id: 'tkr20_alikhan', name: 'Ali Khan', role: 'PACER', country: 'USA', isOverseas: true, batRating: 20, bowlRating: 91, fieldRating: 84, overall: 89, rarity: 'GOLD', specialBadge: 'Yorker Express (8 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 8, econ: 7.43 } },
+      { id: 'tkr20_seifert', name: 'Tim Seifert', role: 'WK', country: 'New Zealand', isOverseas: true, batRating: 88, bowlRating: 20, fieldRating: 92, overall: 88, rarity: 'GOLD', specialBadge: 'Dynamic Gloveman (133 Runs)', seasonStats: { runs: 133, avg: 26.60, sr: 109.91, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'tkr20_bravo_dm', name: 'Darren Bravo', role: 'MIDDLE_ORDER', country: 'West Indies', isOverseas: false, batRating: 91, bowlRating: 20, fieldRating: 86, overall: 90, rarity: 'DIAMOND', specialBadge: 'Final 58* (47) & 297 Runs', seasonStats: { runs: 297, avg: 59.40, sr: 115.11, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'tkr20_pierre', name: 'Khary Pierre', role: 'SPINNER', country: 'West Indies', isOverseas: false, batRating: 40, bowlRating: 86, fieldRating: 85, overall: 85, rarity: 'GOLD', specialBadge: 'Spin Web (8 Wkts)', seasonStats: { runs: 6, avg: 6.0, sr: 100.0, hundreds: 0, fifties: 0, wkts: 8, econ: 6.84 } }
+    ]
+  },
+
+  // ================= THE HUNDRED =================
+  {
+    id: 'hundred_ovi_2023',
+    league: 'THE_HUNDRED',
+    name: 'Oval Invincibles',
+    shortName: 'OVI',
+    year: '2023',
+    themeColor: '#00A389',
+    secondaryColor: '#002B49',
+    textColor: '#FFFFFF',
+    accentColor: '#00D2B4',
+    banner: 'The Hundred Champions & Klaasen Power',
+    players: [
+      { id: 'ovi23_klaasen', name: 'Heinrich Klaasen', role: 'WK', country: 'South Africa', isOverseas: true, batRating: 98, bowlRating: 20, fieldRating: 90, overall: 98, rarity: 'LEGEND', specialBadge: '100-Ball King (189 Runs, 178.3 SR)', seasonStats: { runs: 189, avg: 31.50, sr: 178.30, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'ovi23_scurran', name: 'Sam Curran', role: 'PACE_ALL', country: 'England', isOverseas: false, batRating: 90, bowlRating: 92, fieldRating: 90, overall: 93, rarity: 'ICONIC', specialBadge: '175 Runs & 9 Wickets', seasonStats: { runs: 175, avg: 29.16, sr: 147.05, hundreds: 0, fifties: 1, wkts: 9, econ: 7.20 } },
+      { id: 'ovi23_tcurran', name: 'Tom Curran', role: 'PACE_ALL', country: 'England', isOverseas: false, batRating: 89, bowlRating: 93, fieldRating: 88, overall: 93, rarity: 'ICONIC', specialBadge: 'Final MoM (67* off 34 & 1/25)', seasonStats: { runs: 175, avg: 43.75, sr: 176.76, hundreds: 0, fifties: 1, wkts: 9, econ: 7.85 } },
+      { id: 'ovi23_jacks', name: 'Will Jacks', role: 'OPENER', country: 'England', isOverseas: false, batRating: 93, bowlRating: 70, fieldRating: 88, overall: 92, rarity: 'DIAMOND', specialBadge: '213 Runs (154.3 SR)', seasonStats: { runs: 213, avg: 26.62, sr: 154.34, hundreds: 0, fifties: 2, wkts: 1, econ: 6.80 } },
+      { id: 'ovi23_roy', name: 'Jason Roy', role: 'OPENER', country: 'England', isOverseas: false, batRating: 88, bowlRating: 20, fieldRating: 85, overall: 88, rarity: 'GOLD', specialBadge: 'Powerplay Batter (150 Runs)', seasonStats: { runs: 150, avg: 21.42, sr: 133.92, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'ovi23_billings', name: 'Sam Billings', role: 'MIDDLE_ORDER', country: 'England', isOverseas: false, batRating: 89, bowlRating: 20, fieldRating: 94, overall: 89, rarity: 'DIAMOND', specialBadge: 'Winning Captain (144 Runs)', seasonStats: { runs: 144, avg: 20.57, sr: 138.46, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'ovi23_zampa', name: 'Adam Zampa', role: 'SPINNER', country: 'Australia', isOverseas: true, batRating: 20, bowlRating: 94, fieldRating: 84, overall: 92, rarity: 'DIAMOND', specialBadge: 'Wrist Spin Match-Winner (8 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 8, econ: 6.90 } },
+      { id: 'ovi23_narine', name: 'Sunil Narine', role: 'SPIN_ALL', country: 'West Indies', isOverseas: true, batRating: 80, bowlRating: 95, fieldRating: 82, overall: 93, rarity: 'ICONIC', specialBadge: 'ER 5.45 (7 Wkts)', seasonStats: { runs: 30, avg: 15.0, sr: 150.0, hundreds: 0, fifties: 0, wkts: 7, econ: 5.45 } },
+      { id: 'ovi23_spencer', name: 'Spencer Johnson', role: 'PACER', country: 'Australia', isOverseas: true, batRating: 25, bowlRating: 93, fieldRating: 82, overall: 91, rarity: 'DIAMOND', specialBadge: '3/1 in 20 Balls Legend', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 7, econ: 5.15 } },
+      { id: 'ovi23_atkinson', name: 'Gus Atkinson', role: 'PACER', country: 'England', isOverseas: false, batRating: 35, bowlRating: 91, fieldRating: 85, overall: 89, rarity: 'DIAMOND', specialBadge: '90mph Heat (10 Wkts)', seasonStats: { runs: 10, avg: 10.0, sr: 125.0, hundreds: 0, fifties: 0, wkts: 10, econ: 7.95 } },
+      { id: 'ovi23_sowter', name: 'Nathan Sowter', role: 'SPINNER', country: 'England', isOverseas: false, batRating: 20, bowlRating: 90, fieldRating: 80, overall: 88, rarity: 'GOLD', specialBadge: '11 Wickets (ER 7.15)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 11, econ: 7.15 } }
+    ]
+  },
+
+  // ================= ILT20 (UAE) =================
+  {
+    id: 'ilt20_gg_2023',
+    league: 'ILT20',
+    name: 'Gulf Giants',
+    shortName: 'GG',
+    year: '2023',
+    themeColor: '#FF4500',
+    secondaryColor: '#1A237E',
+    textColor: '#FFFFFF',
+    accentColor: '#FFD700',
+    banner: 'Inaugural ILT20 Champions & Vince Masterclass',
+    players: [
+      { id: 'gg23_vince', name: 'James Vince', role: 'OPENER', country: 'England', isOverseas: false, batRating: 97, bowlRating: 20, fieldRating: 89, overall: 96, rarity: 'LEGEND', specialBadge: 'Captain & Top Scorer (439 Runs, Final MoM 83*)', seasonStats: { runs: 439, avg: 48.77, sr: 137.61, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'gg23_jordan', name: 'Chris Jordan', role: 'PACER', country: 'England', isOverseas: false, batRating: 65, bowlRating: 96, fieldRating: 92, overall: 95, rarity: 'LEGEND', specialBadge: 'Leading Wicket Taker (20 Wkts, ER 7.47)', seasonStats: { runs: 42, avg: 21.0, sr: 140.0, hundreds: 0, fifties: 0, wkts: 20, econ: 7.47 } },
+      { id: 'gg23_hetmyer', name: 'Shimron Hetmyer', role: 'MIDDLE_ORDER', country: 'West Indies', isOverseas: true, batRating: 93, bowlRating: 20, fieldRating: 88, overall: 93, rarity: 'ICONIC', specialBadge: '228 Runs (170.1 SR)', seasonStats: { runs: 228, avg: 28.50, sr: 170.14, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'gg23_wiese', name: 'David Wiese', role: 'PACE_ALL', country: 'Namibia', isOverseas: true, batRating: 89, bowlRating: 92, fieldRating: 88, overall: 91, rarity: 'DIAMOND', specialBadge: '18 Wickets & 133 Runs (166 SR)', seasonStats: { runs: 133, avg: 26.60, sr: 166.25, hundreds: 0, fifties: 0, wkts: 18, econ: 7.15 } },
+      { id: 'gg23_lynn', name: 'Chris Lynn', role: 'OPENER', country: 'Australia', isOverseas: true, batRating: 92, bowlRating: 20, fieldRating: 82, overall: 91, rarity: 'DIAMOND', specialBadge: '243 Runs (SR 135.0)', seasonStats: { runs: 243, avg: 34.71, sr: 135.00, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'gg23_banton', name: 'Tom Banton', role: 'WK', country: 'England', isOverseas: false, batRating: 88, bowlRating: 20, fieldRating: 90, overall: 88, rarity: 'GOLD', specialBadge: '360 Gloveman (170 Runs)', seasonStats: { runs: 170, avg: 24.28, sr: 125.92, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'gg23_brathwaite', name: 'Carlos Brathwaite', role: 'PACE_ALL', country: 'West Indies', isOverseas: true, batRating: 84, bowlRating: 89, fieldRating: 85, overall: 87, rarity: 'GOLD', specialBadge: 'Final Clutch 3 Wkts (8 Wkts in 4m)', seasonStats: { runs: 45, avg: 22.5, sr: 140.6, hundreds: 0, fifties: 0, wkts: 8, econ: 6.88 } },
+      { id: 'gg23_rehan', name: 'Rehan Ahmed', role: 'SPINNER', country: 'England', isOverseas: false, batRating: 70, bowlRating: 89, fieldRating: 86, overall: 88, rarity: 'GOLD', specialBadge: 'Leg Spin Prodigy (10 Wkts)', seasonStats: { runs: 25, avg: 12.5, sr: 113.6, hundreds: 0, fifties: 0, wkts: 10, econ: 7.62 } },
+      { id: 'gg23_sanchit', name: 'Sanchit Sharma', role: 'PACER', country: 'UAE', isOverseas: false, batRating: 20, bowlRating: 85, fieldRating: 80, overall: 84, rarity: 'GOLD', specialBadge: 'Local UAE Star (7 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 7, econ: 7.82 } },
+      { id: 'gg23_gleeson', name: 'Richard Gleeson', role: 'PACER', country: 'England', isOverseas: false, batRating: 20, bowlRating: 88, fieldRating: 78, overall: 86, rarity: 'GOLD', specialBadge: 'Express Pace (9 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 9, econ: 8.35 } },
+      { id: 'gg23_cox', name: 'Jordan Cox', role: 'FINISHER', country: 'England', isOverseas: false, batRating: 85, bowlRating: 20, fieldRating: 90, overall: 85, rarity: 'GOLD', specialBadge: 'Middle Order Accelerator', seasonStats: { runs: 122, avg: 30.50, sr: 138.63, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } }
+    ]
+  },
+
+  // ================= T20 WORLD CUP SQUADS =================
+  {
+    id: 'ind_t20_2024',
+    league: 'T20_WC',
+    name: 'India (T20 Champions)',
+    shortName: 'IND',
+    year: '2024',
+    themeColor: '#0055A5',
+    secondaryColor: '#FF9933',
+    textColor: '#FFFFFF',
+    accentColor: '#138808',
+    banner: 'Unbeaten World Cup Champions',
+    players: [
+      { id: 'ind24_bumrah', name: 'Jasprit Bumrah', role: 'PACER', country: 'India', isOverseas: false, batRating: 25, bowlRating: 99, fieldRating: 88, overall: 99, rarity: 'LEGEND', specialBadge: 'Player of Tournament (15w, ER 4.17)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 15, econ: 4.17 } },
+      { id: 'ind24_rohit', name: 'Rohit Sharma', role: 'OPENER', country: 'India', isOverseas: false, batRating: 97, bowlRating: 20, fieldRating: 88, overall: 97, rarity: 'LEGEND', specialBadge: 'Captain Marvel (92 vs Aus, 257 Runs)', seasonStats: { runs: 257, avg: 36.71, sr: 156.70, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'ind24_hardik', name: 'Hardik Pandya', role: 'PACE_ALL', country: 'India', isOverseas: false, batRating: 93, bowlRating: 93, fieldRating: 94, overall: 97, rarity: 'LEGEND', specialBadge: 'Final Last Over Hero (11w, 144r, Klaasen Wicket)', seasonStats: { runs: 144, avg: 48.00, sr: 151.57, hundreds: 0, fifties: 1, wkts: 11, econ: 7.64 } },
+      { id: 'ind24_kohli', name: 'Virat Kohli', role: 'OPENER', country: 'India', isOverseas: false, batRating: 96, bowlRating: 30, fieldRating: 94, overall: 96, rarity: 'LEGEND', specialBadge: 'Final MoM (76 in Final)', seasonStats: { runs: 151, avg: 18.87, sr: 112.68, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'ind24_arshdeep', name: 'Arshdeep Singh', role: 'PACER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 94, fieldRating: 82, overall: 94, rarity: 'ICONIC', specialBadge: 'Joint Highest Wickets (17 Wkts, ER 7.16)', seasonStats: { runs: 11, avg: 11.0, sr: 100.0, hundreds: 0, fifties: 0, wkts: 17, econ: 7.16 } },
+      { id: 'ind24_kuldeep', name: 'Kuldeep Yadav', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 30, bowlRating: 95, fieldRating: 80, overall: 94, rarity: 'ICONIC', specialBadge: 'Super 8 Dominance (10 Wkts, ER 6.95)', seasonStats: { runs: 1, avg: 1.0, sr: 33.3, hundreds: 0, fifties: 0, wkts: 10, econ: 6.95 } },
+      { id: 'ind24_surya', name: 'Suryakumar Yadav', role: 'TOP_ORDER', country: 'India', isOverseas: false, batRating: 94, bowlRating: 20, fieldRating: 99, overall: 95, rarity: 'ICONIC', specialBadge: 'The Boundary Catch of the Century', seasonStats: { runs: 199, avg: 28.42, sr: 135.37, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'ind24_axar', name: 'Axar Patel', role: 'SPIN_ALL', country: 'India', isOverseas: false, batRating: 89, bowlRating: 91, fieldRating: 92, overall: 92, rarity: 'DIAMOND', specialBadge: 'Final 47 (31) & 9 Wickets', seasonStats: { runs: 92, avg: 23.00, sr: 139.39, hundreds: 0, fifties: 0, wkts: 9, econ: 7.86 } },
+      { id: 'ind24_pant', name: 'Rishabh Pant', role: 'WK', country: 'India', isOverseas: false, batRating: 91, bowlRating: 20, fieldRating: 94, overall: 91, rarity: 'DIAMOND', specialBadge: 'Miracle Return (171 Runs & 14 Dismissals)', seasonStats: { runs: 171, avg: 24.42, sr: 127.61, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'ind24_dube', name: 'Shivam Dube', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 89, bowlRating: 70, fieldRating: 85, overall: 88, rarity: 'GOLD', specialBadge: 'Final 27 (16) Spin Basher', seasonStats: { runs: 133, avg: 22.16, sr: 114.65, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'ind24_siraj', name: 'Mohammed Siraj', role: 'PACER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 88, fieldRating: 86, overall: 87, rarity: 'GOLD', specialBadge: 'Powerplay Seam in NY', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 1, econ: 5.18 } }
+    ]
+  },
+  {
+    id: 'wi_t20_2016',
+    league: 'T20_WC',
+    name: 'West Indies (2-Time Champions)',
+    shortName: 'WI',
+    year: '2016',
+    themeColor: '#7B002C',
+    secondaryColor: '#FFCD00',
+    textColor: '#FFFFFF',
+    accentColor: '#B31B1B',
+    banner: 'Remember the Name: Carlos Brathwaite!',
+    players: [
+      { id: 'wi16_gayle', name: 'Chris Gayle', role: 'OPENER', country: 'West Indies', isOverseas: false, batRating: 96, bowlRating: 60, fieldRating: 75, overall: 96, rarity: 'LEGEND', specialBadge: 'Century vs Eng (100* off 48b)', seasonStats: { runs: 113, avg: 37.66, sr: 194.82, hundreds: 1, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'wi16_samuels', name: 'Marlon Samuels', role: 'TOP_ORDER', country: 'West Indies', isOverseas: false, batRating: 96, bowlRating: 50, fieldRating: 88, overall: 96, rarity: 'LEGEND', specialBadge: 'Final MoM (85* off 66, 2-Time Final MoM)', seasonStats: { runs: 181, avg: 36.20, sr: 112.42, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'wi16_russell', name: 'Andre Russell', role: 'PACE_ALL', country: 'West Indies', isOverseas: false, batRating: 95, bowlRating: 93, fieldRating: 92, overall: 96, rarity: 'LEGEND', specialBadge: 'Semi-Final 43* (20) vs Ind & 9 Wkts', seasonStats: { runs: 91, avg: 45.50, sr: 142.18, hundreds: 0, fifties: 0, wkts: 9, econ: 7.91 } },
+      { id: 'wi16_brathwaite', name: 'Carlos Brathwaite', role: 'PACE_ALL', country: 'West Indies', isOverseas: false, batRating: 93, bowlRating: 92, fieldRating: 88, overall: 94, rarity: 'ICONIC', specialBadge: '4 Consecutive Sixes in Final Over & 3/23', seasonStats: { runs: 59, avg: 29.50, sr: 196.66, hundreds: 0, fifties: 0, wkts: 7, econ: 8.45 } },
+      { id: 'wi16_bravo', name: 'Dwayne Bravo', role: 'PACE_ALL', country: 'West Indies', isOverseas: false, batRating: 86, bowlRating: 94, fieldRating: 95, overall: 93, rarity: 'ICONIC', specialBadge: 'Champion Song & 9 Wickets', seasonStats: { runs: 49, avg: 16.33, sr: 111.36, hundreds: 0, fifties: 0, wkts: 9, econ: 7.37 } },
+      { id: 'wi16_badree', name: 'Samuel Badree', role: 'SPINNER', country: 'West Indies', isOverseas: false, batRating: 20, bowlRating: 97, fieldRating: 80, overall: 95, rarity: 'LEGEND', specialBadge: 'Powerplay Leg-Spin Master (9 Wkts, ER 5.39)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 9, econ: 5.39 } },
+      { id: 'wi16_simmons', name: 'Lendl Simmons', role: 'MIDDLE_ORDER', country: 'West Indies', isOverseas: false, batRating: 94, bowlRating: 20, fieldRating: 85, overall: 93, rarity: 'ICONIC', specialBadge: 'Semi-Final Match Winner (82* off 51 vs Ind)', seasonStats: { runs: 82, avg: 82.00, sr: 160.78, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'wi16_sammy', name: 'Daren Sammy', role: 'PACE_ALL', country: 'West Indies', isOverseas: false, batRating: 86, bowlRating: 80, fieldRating: 92, overall: 88, rarity: 'DIAMOND', specialBadge: '2-Time T20 WC Winning Captain', seasonStats: { runs: 33, avg: 33.00, sr: 143.47, hundreds: 0, fifties: 0, wkts: 1, econ: 9.15 } },
+      { id: 'wi16_ramdin', name: 'Denesh Ramdin', role: 'WK', country: 'West Indies', isOverseas: false, batRating: 82, bowlRating: 10, fieldRating: 93, overall: 84, rarity: 'GOLD', specialBadge: 'Gloveman in Final', seasonStats: { runs: 36, avg: 12.00, sr: 87.80, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'wi16_fletcher', name: 'Andre Fletcher', role: 'OPENER', country: 'West Indies', isOverseas: false, batRating: 88, bowlRating: 20, fieldRating: 86, overall: 87, rarity: 'GOLD', specialBadge: '84* vs Sri Lanka', seasonStats: { runs: 106, avg: 53.00, sr: 121.83, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'wi16_benn', name: 'Sulieman Benn', role: 'SPINNER', country: 'West Indies', isOverseas: false, batRating: 20, bowlRating: 88, fieldRating: 78, overall: 86, rarity: 'GOLD', specialBadge: 'Tall Left-Arm Spin (ER 6.88)', seasonStats: { runs: 1, avg: 1.0, sr: 100.0, hundreds: 0, fifties: 0, wkts: 3, econ: 6.88 } }
+    ]
+  },
+  {
+    id: 'eng_t20_2022',
+    league: 'T20_WC',
+    name: 'England (T20 Champions)',
+    shortName: 'ENG',
+    year: '2022',
+    themeColor: '#CE1124',
+    secondaryColor: '#002B49',
+    textColor: '#FFFFFF',
+    accentColor: '#1B3F8B',
+    banner: 'Dual White-Ball Reign at the MCG',
+    players: [
+      { id: 'eng22_buttler', name: 'Jos Buttler', role: 'WK', country: 'England', isOverseas: false, batRating: 98, bowlRating: 10, fieldRating: 95, overall: 98, rarity: 'LEGEND', specialBadge: 'Captain & 80* in Semi (225 Runs, 144.2 SR)', seasonStats: { runs: 225, avg: 45.00, sr: 144.23, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'eng22_curran', name: 'Sam Curran', role: 'PACE_ALL', country: 'England', isOverseas: false, batRating: 85, bowlRating: 98, fieldRating: 92, overall: 98, rarity: 'LEGEND', specialBadge: 'Player of Final & Tournament (13 Wkts, 3/12 in Final, ER 6.40)', seasonStats: { runs: 13, avg: 13.0, sr: 100.0, hundreds: 0, fifties: 0, wkts: 13, econ: 6.40 } },
+      { id: 'eng22_stokes', name: 'Ben Stokes', role: 'PACE_ALL', country: 'England', isOverseas: false, batRating: 95, bowlRating: 90, fieldRating: 96, overall: 96, rarity: 'LEGEND', specialBadge: 'Final Hero (52* in Final & 6 Wkts)', seasonStats: { runs: 110, avg: 36.66, sr: 106.79, hundreds: 0, fifties: 1, wkts: 6, econ: 6.79 } },
+      { id: 'eng22_hales', name: 'Alex Hales', role: 'OPENER', country: 'England', isOverseas: false, batRating: 95, bowlRating: 10, fieldRating: 86, overall: 94, rarity: 'ICONIC', specialBadge: 'Semi-Final MoM (86* off 47 vs Ind, 212 Runs)', seasonStats: { runs: 212, avg: 42.40, sr: 147.22, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'eng22_rashid', name: 'Adil Rashid', role: 'SPINNER', country: 'England', isOverseas: false, batRating: 30, bowlRating: 96, fieldRating: 82, overall: 95, rarity: 'LEGEND', specialBadge: 'Final & Semi Masterclass (Babar & Rohit Wickets, ER 6.12)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 4, econ: 6.12 } },
+      { id: 'eng22_brook', name: 'Harry Brook', role: 'MIDDLE_ORDER', country: 'England', isOverseas: false, batRating: 89, bowlRating: 20, fieldRating: 90, overall: 89, rarity: 'DIAMOND', specialBadge: 'Middle Order Stroke Maker', seasonStats: { runs: 56, avg: 11.20, sr: 96.55, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'eng22_moeen', name: 'Moeen Ali', role: 'SPIN_ALL', country: 'England', isOverseas: false, batRating: 89, bowlRating: 86, fieldRating: 88, overall: 89, rarity: 'DIAMOND', specialBadge: 'Final 19 (12) vs Rauf', seasonStats: { runs: 56, avg: 18.66, sr: 133.33, hundreds: 0, fifties: 0, wkts: 0, econ: 6.80 } },
+      { id: 'eng22_livingstone', name: 'Liam Livingstone', role: 'SPIN_ALL', country: 'England', isOverseas: false, batRating: 90, bowlRating: 85, fieldRating: 95, overall: 90, rarity: 'DIAMOND', specialBadge: 'Leg & Off-Spin Hybrid (3 Wkts & Big Hitter)', seasonStats: { runs: 55, avg: 18.33, sr: 125.00, hundreds: 0, fifties: 0, wkts: 3, econ: 7.42 } },
+      { id: 'eng22_woakes', name: 'Chris Woakes', role: 'PACER', country: 'England', isOverseas: false, batRating: 60, bowlRating: 91, fieldRating: 88, overall: 90, rarity: 'DIAMOND', specialBadge: 'Powerplay Seam (5 Wkts)', seasonStats: { runs: 10, avg: 10.0, sr: 100.0, hundreds: 0, fifties: 0, wkts: 5, econ: 8.73 } },
+      { id: 'eng22_jordan', name: 'Chris Jordan', role: 'PACER', country: 'England', isOverseas: false, batRating: 40, bowlRating: 90, fieldRating: 94, overall: 89, rarity: 'GOLD', specialBadge: 'Semi 3/43 & Death Yorker', seasonStats: { runs: 3, avg: 3.0, sr: 100.0, hundreds: 0, fifties: 0, wkts: 5, econ: 8.90 } },
+      { id: 'eng22_wood', name: 'Mark Wood', role: 'PACER', country: 'England', isOverseas: false, batRating: 25, bowlRating: 96, fieldRating: 84, overall: 95, rarity: 'LEGEND', specialBadge: '155 km/h Express (9 Wkts in 4m, ER 7.71)', seasonStats: { runs: 1, avg: 1.0, sr: 50.0, hundreds: 0, fifties: 0, wkts: 9, econ: 7.71 } }
+    ]
+  },
+
+  // ================= ODI WORLD CUP SQUADS =================
+  {
+    id: 'ind_odi_2011',
+    league: 'ODI_WC',
+    name: 'India (World Cup Champions)',
+    shortName: 'IND',
+    year: '2011',
+    themeColor: '#0055A5',
+    secondaryColor: '#FF9933',
+    textColor: '#FFFFFF',
+    accentColor: '#138808',
+    banner: '28 Years of Waiting Ended',
+    players: [
+      { id: 'ind11_sachin', name: 'Sachin Tendulkar', role: 'OPENER', country: 'India', isOverseas: false, batRating: 99, bowlRating: 60, fieldRating: 88, overall: 99, rarity: 'LEGEND', specialBadge: 'God of Cricket (482 Runs, 2 100s)', seasonStats: { runs: 482, avg: 53.55, sr: 91.98, hundreds: 2, fifties: 2, wkts: 2, econ: 6.20 } },
+      { id: 'ind11_yuvraj', name: 'Yuvraj Singh', role: 'SPIN_ALL', country: 'India', isOverseas: false, batRating: 98, bowlRating: 94, fieldRating: 95, overall: 99, rarity: 'LEGEND', specialBadge: 'Player of Tournament (362r & 15w, 4 MoMs)', seasonStats: { runs: 362, avg: 90.50, sr: 86.19, hundreds: 1, fifties: 4, wkts: 15, econ: 5.02 } },
+      { id: 'ind11_dhoni', name: 'MS Dhoni', role: 'WK', country: 'India', isOverseas: false, batRating: 96, bowlRating: 30, fieldRating: 98, overall: 97, rarity: 'LEGEND', specialBadge: 'World Cup Winning Six (91* in Final)', seasonStats: { runs: 241, avg: 48.20, sr: 82.25, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'ind11_zaheer', name: 'Zaheer Khan', role: 'PACER', country: 'India', isOverseas: false, batRating: 30, bowlRating: 98, fieldRating: 78, overall: 97, rarity: 'LEGEND', specialBadge: 'Joint Highest Wickets (21 Wkts, Knuckleball)', seasonStats: { runs: 12, avg: 4.0, sr: 60.0, hundreds: 0, fifties: 0, wkts: 21, econ: 4.83 } },
+      { id: 'ind11_sehwag', name: 'Virender Sehwag', role: 'OPENER', country: 'India', isOverseas: false, batRating: 95, bowlRating: 65, fieldRating: 76, overall: 95, rarity: 'ICONIC', specialBadge: 'First Ball Boundary King (380 Runs)', seasonStats: { runs: 380, avg: 47.50, sr: 122.58, hundreds: 1, fifties: 1, wkts: 0, econ: 5.83 } },
+      { id: 'ind11_gambhir', name: 'Gautam Gambhir', role: 'TOP_ORDER', country: 'India', isOverseas: false, batRating: 95, bowlRating: 20, fieldRating: 88, overall: 95, rarity: 'ICONIC', specialBadge: 'Hero of the Final (97 off 122)', seasonStats: { runs: 393, avg: 43.66, sr: 85.06, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'ind11_kohli', name: 'Virat Kohli', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 90, bowlRating: 40, fieldRating: 93, overall: 91, rarity: 'DIAMOND', specialBadge: 'World Cup Debut Century & 35 in Final', seasonStats: { runs: 282, avg: 35.25, sr: 82.21, hundreds: 1, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'ind11_harbhajan', name: 'Harbhajan Singh', role: 'SPINNER', country: 'India', isOverseas: false, batRating: 55, bowlRating: 91, fieldRating: 80, overall: 90, rarity: 'DIAMOND', specialBadge: 'Turbanator (Umar Akmal Wicket in Semi)', seasonStats: { runs: 28, avg: 9.3, sr: 75.0, hundreds: 0, fifties: 0, wkts: 9, econ: 4.48 } },
+      { id: 'ind11_raina', name: 'Suresh Raina', role: 'MIDDLE_ORDER', country: 'India', isOverseas: false, batRating: 91, bowlRating: 70, fieldRating: 96, overall: 91, rarity: 'DIAMOND', specialBadge: 'Quarter & Semi Clutch (34* vs Aus & 36* vs Pak)', seasonStats: { runs: 74, avg: 74.0, sr: 104.22, hundreds: 0, fifties: 0, wkts: 0, econ: 0 } },
+      { id: 'ind11_munaf', name: 'Munaf Patel', role: 'PACER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 89, fieldRating: 75, overall: 88, rarity: 'GOLD', specialBadge: 'Unsung Hero (11 Wkts)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 11, econ: 5.36 } },
+      { id: 'ind11_nehra', name: 'Ashish Nehra', role: 'PACER', country: 'India', isOverseas: false, batRating: 20, bowlRating: 89, fieldRating: 78, overall: 88, rarity: 'GOLD', specialBadge: 'Semi-Final Match Winner (2/33 vs Pak)', seasonStats: { runs: 0, avg: 0, sr: 0, hundreds: 0, fifties: 0, wkts: 3, econ: 4.88 } }
+    ]
+  },
+  {
+    id: 'aus_odi_2003',
+    league: 'ODI_WC',
+    name: 'Australia (Invincible Champions)',
+    shortName: 'AUS',
+    year: '2003',
+    themeColor: '#00593B',
+    secondaryColor: '#FFCD00',
+    textColor: '#FFFFFF',
+    accentColor: '#FFB81C',
+    banner: 'Undefeated 11-0 World Cup Campaign',
+    players: [
+      { id: 'aus03_ponting', name: 'Ricky Ponting', role: 'TOP_ORDER', country: 'Australia', isOverseas: false, batRating: 99, bowlRating: 30, fieldRating: 98, overall: 99, rarity: 'LEGEND', specialBadge: 'Final Masterclass (140* vs Ind, 8 Sixes)', seasonStats: { runs: 415, avg: 51.87, sr: 87.92, hundreds: 2, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'aus03_mcgrath', name: 'Glenn McGrath', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 15, bowlRating: 99, fieldRating: 82, overall: 99, rarity: 'LEGEND', specialBadge: 'Pigeon (21 Wkts, 7/15 vs Namibia, ER 3.56)', seasonStats: { runs: 5, avg: 2.5, sr: 50.0, hundreds: 0, fifties: 0, wkts: 21, econ: 3.56 } },
+      { id: 'aus03_gilchrist', name: 'Adam Gilchrist', role: 'WK', country: 'Australia', isOverseas: false, batRating: 97, bowlRating: 20, fieldRating: 97, overall: 97, rarity: 'LEGEND', specialBadge: 'Fearless Opener (408 Runs, 105.1 SR)', seasonStats: { runs: 408, avg: 40.80, sr: 105.15, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'aus03_lee', name: 'Brett Lee', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 60, bowlRating: 97, fieldRating: 92, overall: 97, rarity: 'LEGEND', specialBadge: '160.6 km/h Terror (22 Wkts)', seasonStats: { runs: 38, avg: 19.0, sr: 90.4, hundreds: 0, fifties: 0, wkts: 22, econ: 4.73 } },
+      { id: 'aus03_symonds', name: 'Andrew Symonds', role: 'PACE_ALL', country: 'Australia', isOverseas: false, batRating: 95, bowlRating: 88, fieldRating: 99, overall: 96, rarity: 'ICONIC', specialBadge: '143* vs Pak (326 Runs, 163.0 Avg)', seasonStats: { runs: 326, avg: 163.00, sr: 90.55, hundreds: 1, fifties: 2, wkts: 2, econ: 3.84 } },
+      { id: 'aus03_hayden', name: 'Matthew Hayden', role: 'OPENER', country: 'Australia', isOverseas: false, batRating: 94, bowlRating: 20, fieldRating: 90, overall: 94, rarity: 'ICONIC', specialBadge: 'Bruiser Opener (328 Runs)', seasonStats: { runs: 328, avg: 32.80, sr: 80.00, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'aus03_bichel', name: 'Andy Bichel', role: 'PACE_ALL', country: 'Australia', isOverseas: false, batRating: 75, bowlRating: 94, fieldRating: 85, overall: 92, rarity: 'DIAMOND', specialBadge: '7/20 vs England & 16 Wkts', seasonStats: { runs: 117, avg: 117.00, sr: 78.52, hundreds: 0, fifties: 0, wkts: 16, econ: 3.45 } },
+      { id: 'aus03_bevan', name: 'Michael Bevan', role: 'FINISHER', country: 'Australia', isOverseas: false, batRating: 95, bowlRating: 60, fieldRating: 88, overall: 93, rarity: 'DIAMOND', specialBadge: 'Ultimate Finisher (256r, 64 Avg)', seasonStats: { runs: 256, avg: 64.00, sr: 72.93, hundreds: 0, fifties: 3, wkts: 1, econ: 4.88 } },
+      { id: 'aus03_martyn', name: 'Damien Martyn', role: 'TOP_ORDER', country: 'Australia', isOverseas: false, batRating: 94, bowlRating: 20, fieldRating: 92, overall: 94, rarity: 'ICONIC', specialBadge: 'Broken Finger Hero (88* in Final, 323r)', seasonStats: { runs: 323, avg: 64.60, sr: 81.77, hundreds: 0, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'aus03_hogg', name: 'Brad Hogg', role: 'SPINNER', country: 'Australia', isOverseas: false, batRating: 40, bowlRating: 92, fieldRating: 88, overall: 91, rarity: 'DIAMOND', specialBadge: 'Chinaman Wizard (13 Wkts, ER 3.84)', seasonStats: { runs: 4, avg: 4.0, sr: 44.4, hundreds: 0, fifties: 0, wkts: 13, econ: 3.84 } },
+      { id: 'aus03_lehmann', name: 'Darren Lehmann', role: 'MIDDLE_ORDER', country: 'Australia', isOverseas: false, batRating: 88, bowlRating: 75, fieldRating: 84, overall: 88, rarity: 'GOLD', specialBadge: 'Final Winning Catch (224 Runs)', seasonStats: { runs: 224, avg: 37.33, sr: 80.86, hundreds: 0, fifties: 1, wkts: 3, econ: 4.22 } }
+    ]
+  },
+  {
+    id: 'aus_odi_2023',
+    league: 'ODI_WC',
+    name: 'Australia (6th World Cup)',
+    shortName: 'AUS',
+    year: '2023',
+    themeColor: '#00593B',
+    secondaryColor: '#FFCD00',
+    textColor: '#FFFFFF',
+    accentColor: '#FFB81C',
+    banner: 'Silence the 130,000 Crowd in Ahmedabad',
+    players: [
+      { id: 'aus23_head', name: 'Travis Head', role: 'OPENER', country: 'Australia', isOverseas: false, batRating: 99, bowlRating: 60, fieldRating: 95, overall: 99, rarity: 'LEGEND', specialBadge: 'Final & Semi MoM (137 in Final, Rohit Catch)', seasonStats: { runs: 329, avg: 54.83, sr: 127.51, hundreds: 2, fifties: 1, wkts: 2, econ: 4.90 } },
+      { id: 'aus23_cummins', name: 'Pat Cummins', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 70, bowlRating: 97, fieldRating: 92, overall: 97, rarity: 'LEGEND', specialBadge: 'Captain Silencer (2/34 in Final & 15 Wkts)', seasonStats: { runs: 128, avg: 25.60, sr: 70.32, hundreds: 0, fifties: 0, wkts: 15, econ: 5.75 } },
+      { id: 'aus23_maxwell', name: 'Glenn Maxwell', role: 'SPIN_ALL', country: 'Australia', isOverseas: false, batRating: 98, bowlRating: 88, fieldRating: 98, overall: 98, rarity: 'LEGEND', specialBadge: '201* on One Leg & Fastest WC 100 (40b)', seasonStats: { runs: 400, avg: 66.66, sr: 150.37, hundreds: 2, fifties: 0, wkts: 6, econ: 4.95 } },
+      { id: 'aus23_zampa', name: 'Adam Zampa', role: 'SPINNER', country: 'Australia', isOverseas: false, batRating: 20, bowlRating: 97, fieldRating: 85, overall: 96, rarity: 'LEGEND', specialBadge: 'Joint Highest Wickets (23 Wkts, ER 5.36)', seasonStats: { runs: 48, avg: 9.6, sr: 80.0, hundreds: 0, fifties: 0, wkts: 23, econ: 5.36 } },
+      { id: 'aus23_warner', name: 'David Warner', role: 'OPENER', country: 'Australia', isOverseas: false, batRating: 96, bowlRating: 20, fieldRating: 94, overall: 96, rarity: 'LEGEND', specialBadge: '535 Runs (2 Hundreds, 108 SR)', seasonStats: { runs: 535, avg: 48.63, sr: 108.29, hundreds: 2, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'aus23_starc', name: 'Mitchell Starc', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 55, bowlRating: 96, fieldRating: 88, overall: 95, rarity: 'LEGEND', specialBadge: 'Knockout Specialist (3/55 in Final, 16 Wkts)', seasonStats: { runs: 87, avg: 14.5, sr: 70.16, hundreds: 0, fifties: 0, wkts: 16, econ: 6.06 } },
+      { id: 'aus23_marsh', name: 'Mitchell Marsh', role: 'TOP_ORDER', country: 'Australia', isOverseas: false, batRating: 94, bowlRating: 75, fieldRating: 90, overall: 93, rarity: 'ICONIC', specialBadge: '441 Runs (177* vs Ban, 107.5 SR)', seasonStats: { runs: 441, avg: 49.00, sr: 107.56, hundreds: 2, fifties: 1, wkts: 2, econ: 7.15 } },
+      { id: 'aus23_hazlewood', name: 'Josh Hazlewood', role: 'PACER', country: 'Australia', isOverseas: false, batRating: 20, bowlRating: 95, fieldRating: 84, overall: 94, rarity: 'ICONIC', specialBadge: 'Line and Length Machine (16 Wkts, 2/60 in Final)', seasonStats: { runs: 4, avg: 2.0, sr: 33.3, hundreds: 0, fifties: 0, wkts: 16, econ: 4.81 } },
+      { id: 'aus23_labuschagne', name: 'Marnus Labuschagne', role: 'MIDDLE_ORDER', country: 'Australia', isOverseas: false, batRating: 92, bowlRating: 60, fieldRating: 96, overall: 92, rarity: 'DIAMOND', specialBadge: 'Final Anchor (58* off 110 & 362 Runs)', seasonStats: { runs: 362, avg: 40.22, sr: 70.70, hundreds: 0, fifties: 3, wkts: 0, econ: 0 } },
+      { id: 'aus23_smith', name: 'Steve Smith', role: 'MIDDLE_ORDER', country: 'Australia', isOverseas: false, batRating: 93, bowlRating: 50, fieldRating: 96, overall: 93, rarity: 'ICONIC', specialBadge: '302 Runs in Campaign', seasonStats: { runs: 302, avg: 33.55, sr: 82.28, hundreds: 0, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'aus23_inglis', name: 'Josh Inglis', role: 'WK', country: 'Australia', isOverseas: false, batRating: 88, bowlRating: 20, fieldRating: 96, overall: 89, rarity: 'DIAMOND', specialBadge: 'Final Record 5 Catches behind stumps', seasonStats: { runs: 159, avg: 19.87, sr: 93.52, hundreds: 0, fifties: 1, wkts: 0, econ: 0 } }
+    ]
+  },
+  {
+    id: 'eng_odi_2019',
+    league: 'ODI_WC',
+    name: 'England (World Cup Champions)',
+    shortName: 'ENG',
+    year: '2019',
+    themeColor: '#CE1124',
+    secondaryColor: '#002B49',
+    textColor: '#FFFFFF',
+    accentColor: '#1B3F8B',
+    banner: 'By the Barest of All Margins at Lord\'s',
+    players: [
+      { id: 'eng19_stokes', name: 'Ben Stokes', role: 'PACE_ALL', country: 'England', isOverseas: false, batRating: 99, bowlRating: 92, fieldRating: 98, overall: 99, rarity: 'LEGEND', specialBadge: 'Final MoM (84* in Final, Super Over Hero & 465 Runs)', seasonStats: { runs: 465, avg: 66.42, sr: 93.18, hundreds: 0, fifties: 5, wkts: 7, econ: 4.83 } },
+      { id: 'eng19_archer', name: 'Jofra Archer', role: 'PACER', country: 'England', isOverseas: false, batRating: 40, bowlRating: 98, fieldRating: 90, overall: 98, rarity: 'LEGEND', specialBadge: 'Super Over Bowler & 20 Wkts (ER 4.57)', seasonStats: { runs: 12, avg: 4.0, sr: 66.6, hundreds: 0, fifties: 0, wkts: 20, econ: 4.57 } },
+      { id: 'eng19_root', name: 'Joe Root', role: 'TOP_ORDER', country: 'England', isOverseas: false, batRating: 97, bowlRating: 65, fieldRating: 95, overall: 97, rarity: 'LEGEND', specialBadge: '556 Runs (2 100s, 3 50s, 13 Catches)', seasonStats: { runs: 556, avg: 61.77, sr: 89.53, hundreds: 2, fifties: 3, wkts: 2, econ: 5.60 } },
+      { id: 'eng19_bairstow', name: 'Jonny Bairstow', role: 'OPENER', country: 'England', isOverseas: false, batRating: 96, bowlRating: 10, fieldRating: 90, overall: 96, rarity: 'LEGEND', specialBadge: '532 Runs (2 Back-to-Back 100s)', seasonStats: { runs: 532, avg: 48.36, sr: 92.84, hundreds: 2, fifties: 2, wkts: 0, econ: 0 } },
+      { id: 'eng19_buttler', name: 'Jos Buttler', role: 'WK', country: 'England', isOverseas: false, batRating: 96, bowlRating: 10, fieldRating: 96, overall: 96, rarity: 'LEGEND', specialBadge: 'Final 59 & Guptill Run Out (312 Runs, 122 SR)', seasonStats: { runs: 312, avg: 34.66, sr: 122.83, hundreds: 1, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'eng19_roy', name: 'Jason Roy', role: 'OPENER', country: 'England', isOverseas: false, batRating: 95, bowlRating: 10, fieldRating: 88, overall: 95, rarity: 'ICONIC', specialBadge: 'Tournament Catalyst (443 Runs, 115.3 SR)', seasonStats: { runs: 443, avg: 63.28, sr: 115.36, hundreds: 1, fifties: 4, wkts: 0, econ: 0 } },
+      { id: 'eng19_woakes', name: 'Chris Woakes', role: 'PACE_ALL', country: 'England', isOverseas: false, batRating: 75, bowlRating: 94, fieldRating: 92, overall: 93, rarity: 'ICONIC', specialBadge: 'Semi MoM (3/37 vs Aus & 16 Wkts)', seasonStats: { runs: 134, avg: 19.14, sr: 89.33, hundreds: 0, fifties: 1, wkts: 16, econ: 5.24 } },
+      { id: 'eng19_wood', name: 'Mark Wood', role: 'PACER', country: 'England', isOverseas: false, batRating: 25, bowlRating: 95, fieldRating: 84, overall: 94, rarity: 'ICONIC', specialBadge: '150km/h Speed (18 Wkts, ER 5.16)', seasonStats: { runs: 4, avg: 4.0, sr: 50.0, hundreds: 0, fifties: 0, wkts: 18, econ: 5.16 } },
+      { id: 'eng19_plunkett', name: 'Liam Plunkett', role: 'PACER', country: 'England', isOverseas: false, batRating: 50, bowlRating: 93, fieldRating: 85, overall: 92, rarity: 'DIAMOND', specialBadge: 'Lucky Charm (3/42 in Final, 11 Wkts)', seasonStats: { runs: 42, avg: 21.0, sr: 84.0, hundreds: 0, fifties: 0, wkts: 11, econ: 4.85 } },
+      { id: 'eng19_morgan', name: 'Eoin Morgan', role: 'MIDDLE_ORDER', country: 'England', isOverseas: false, batRating: 93, bowlRating: 10, fieldRating: 90, overall: 93, rarity: 'ICONIC', specialBadge: 'World Cup Winning Captain & 17 Sixes vs AFG (371r)', seasonStats: { runs: 371, avg: 41.22, sr: 111.07, hundreds: 1, fifties: 1, wkts: 0, econ: 0 } },
+      { id: 'eng19_rashid', name: 'Adil Rashid', role: 'SPINNER', country: 'England', isOverseas: false, batRating: 35, bowlRating: 92, fieldRating: 82, overall: 90, rarity: 'DIAMOND', specialBadge: 'Wrist Spin Variation (11 Wkts)', seasonStats: { runs: 45, avg: 15.0, sr: 86.5, hundreds: 0, fifties: 0, wkts: 11, econ: 5.79 } }
+    ]
+  }
+];
+
+// Tactical slot positions in a cricket starting XI
+export const SQUAD_SLOTS = [
+  { id: 1, posCode: '1. OPENER', name: 'Opener 1', acceptedRoles: ['OPENER', 'WK'], desc: 'Top order stroke maker' },
+  { id: 2, posCode: '2. OPENER', name: 'Opener 2', acceptedRoles: ['OPENER', 'WK'], desc: 'Powerplay striker' },
+  { id: 3, posCode: '3. TOP ORDER', name: 'No. 3 Bat', acceptedRoles: ['TOP_ORDER', 'OPENER'], desc: 'Innings builder' },
+  { id: 4, posCode: '4. MIDDLE ORDER', name: 'No. 4 Bat', acceptedRoles: ['MIDDLE_ORDER', 'TOP_ORDER', 'WK'], desc: 'Middle overs dynamic bat' },
+  { id: 5, posCode: '5. FINISHER', name: 'No. 5 Finisher', acceptedRoles: ['MIDDLE_ORDER', 'FINISHER', 'PACE_ALL', 'SPIN_ALL'], desc: 'Death overs accelerator' },
+  { id: 6, posCode: '6. WICKETKEEPER', name: 'Wicketkeeper', acceptedRoles: ['WK'], desc: 'Designated keeper' },
+  { id: 7, posCode: '7. ALL-ROUNDER', name: 'Pace All-Rounder', acceptedRoles: ['PACE_ALL', 'PACER', 'FINISHER'], desc: 'Seam & batting depth' },
+  { id: 8, posCode: '8. ALL-ROUNDER', name: 'Spin All-Rounder', acceptedRoles: ['SPIN_ALL', 'SPINNER', 'MIDDLE_ORDER'], desc: 'Spin & middle order' },
+  { id: 9, posCode: '9. SPINNER', name: 'Specialist Spinner', acceptedRoles: ['SPINNER', 'SPIN_ALL'], desc: 'Wicket-taking spin' },
+  { id: 10, posCode: '10. PACER', name: 'Strike Pacer', acceptedRoles: ['PACER', 'PACE_ALL'], desc: 'New ball & pace' },
+  { id: 11, posCode: '11. PACER', name: 'Death Pacer', acceptedRoles: ['PACER', 'PACE_ALL'], desc: 'Yorkers & variations' },
+];
